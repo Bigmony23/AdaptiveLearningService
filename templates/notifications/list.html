@@ -18,10 +18,11 @@
                                 <small class="text-muted">{{ notification.created_at|date:"d.m.Y H:i" }}</small>
                             </div>
                             {% if not notification.is_read %}
-                                <form method="post" action="{% url 'mark_notification_read' notification.id %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-sm btn-outline-primary">Отметить прочитанным</button>
-                                </form>
+                                <button
+                                    class="btn btn-sm btn-outline-primary"
+                                    onclick="markAsRead({{ notification.id }})">
+                                    Отметить прочитанным
+                                </button>
                             {% else %}
                                 <span class="badge bg-secondary">Прочитано</span>
                             {% endif %}

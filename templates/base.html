@@ -138,14 +138,42 @@
     </div>
 </footer>
 <script>
+
+function getCookie(name) {
+    let cookieValue = null;
+
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+
+        for (let cookie of cookies) {
+            cookie = cookie.trim();
+
+            if (cookie.startsWith(name + '=')) {
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+                break;
+            }
+        }
+    }
+
+    return cookieValue;
+}
+
 function markAsRead(notificationId) {
+
     fetch(`/notifications/mark-read/${notificationId}/`, {
         method: 'POST',
         headers: {
-            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+            'X-CSRFToken': getCookie('csrftoken')
         }
+    })
+    .then(response => response.json())
+    .then(data => {
+        location.reload();
     });
 }
+
 </script>
 </body>
 </html>
