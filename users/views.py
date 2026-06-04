@@ -178,3 +178,15 @@ class ModulesAdminView(LoginRequiredMixin, View):
             'admin_panel/modules.html',
             {'modules': modules}
         )
+
+
+class RejectUserView(LoginRequiredMixin, View):
+    def post(self, request, user_id):
+        if request.user.role != 'admin':
+            return redirect('home')
+
+        user = get_object_or_404(CustomUser, id=user_id)
+        user.delete()
+
+        messages.success(request, f'Пользователь {user.username} отклонён и удалён')
+        return redirect('admin_pending_users')

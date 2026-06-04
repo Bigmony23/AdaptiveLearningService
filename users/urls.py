@@ -2,7 +2,7 @@ from django.urls import path
 
 from users.views import LoginView, LogoutView, CustomLoginView, RegisterView, RegistrationPendingView, \
     AdminDashboardView, ApproveUserView, ModulesAdminView, CoursesAdminView, TeachersView, StudentsView, \
-    PendingUsersView
+    PendingUsersView, RejectUserView
 
 urlpatterns=(
     path('login/', CustomLoginView.as_view(), name='login'),
@@ -41,5 +41,6 @@ path(
         PendingUsersView.as_view(),
         name='admin_pending_users'
     ),
+path('admin-panel/reject/<int:user_id>/', RejectUserView.as_view(), name='reject_user'),
 
 )
