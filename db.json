@@ -1,0 +1,1939 @@
+[
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-05-03T18:48:29.303Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Course object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-05-06T04:03:42.649Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Course object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-05-09T09:16:50.752Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Course object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-05-09T09:17:00.154Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Course object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Is published\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-05-09T09:39:28.856Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "2",
+    "object_repr": "Prepodavatel12",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-05-09T09:39:50.644Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Course object (2)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Author\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-05-09T09:39:55.974Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Course object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Author\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-05-09T09:46:07.592Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "2",
+    "object_repr": "Prepodavatel12",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Last name\", \"Patronymic\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-05-09T17:12:02.312Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "1",
+    "object_repr": "Основы Python",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-05-09T17:13:05.699Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "Основы Java",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-05-09T17:13:52.424Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "Основы Java",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Order index\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-05-09T17:14:14.478Z",
+    "user": 1,
+    "content_type": 10,
+    "object_id": "2",
+    "object_repr": "Основы Java",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-05-09T17:46:12.826Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Lesson object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-05-09T17:46:50.751Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "1",
+    "object_repr": "Lesson object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-05-09T18:19:43.535Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "2",
+    "object_repr": "Lesson object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-05-09T18:20:55.371Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Lesson object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-05-09T18:21:22.487Z",
+    "user": 1,
+    "content_type": 9,
+    "object_id": "3",
+    "object_repr": "Lesson object (3)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Content\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-05-09T18:47:11.252Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "2",
+    "object_repr": "Java",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-05-09T18:47:17.893Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "1",
+    "object_repr": "Python",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Description\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-05-11T16:20:42.416Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "Test object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-05-11T16:23:45.707Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "Test object (1)",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Title\", \"Passing score\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-05-11T16:27:00.027Z",
+    "user": 1,
+    "content_type": 12,
+    "object_id": "1",
+    "object_repr": "Test object (1)",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-05-11T16:27:52.709Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "1",
+    "object_repr": "Question object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-05-11T16:28:16.259Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "2",
+    "object_repr": "Question object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-05-11T16:28:39.311Z",
+    "user": 1,
+    "content_type": 11,
+    "object_id": "3",
+    "object_repr": "Question object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-05-11T16:29:18.207Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "1",
+    "object_repr": "Answer object (1)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-05-11T16:29:30.292Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "2",
+    "object_repr": "Answer object (2)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-05-11T16:29:45.458Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "3",
+    "object_repr": "Answer object (3)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-05-11T16:30:01.140Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "4",
+    "object_repr": "Answer object (4)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-05-11T16:30:13.758Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "5",
+    "object_repr": "Answer object (5)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2026-05-11T16:30:24.294Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "6",
+    "object_repr": "Answer object (6)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 32,
+  "fields": {
+    "action_time": "2026-05-11T16:30:36.912Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "7",
+    "object_repr": "Answer object (7)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 33,
+  "fields": {
+    "action_time": "2026-05-11T16:30:55.897Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "8",
+    "object_repr": "Answer object (8)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 34,
+  "fields": {
+    "action_time": "2026-05-11T16:31:03.513Z",
+    "user": 1,
+    "content_type": 7,
+    "object_id": "9",
+    "object_repr": "Answer object (9)",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 35,
+  "fields": {
+    "action_time": "2026-05-15T13:00:40.452Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "2",
+    "object_repr": "Prepodavatel12",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 36,
+  "fields": {
+    "action_time": "2026-05-15T14:16:08.789Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "3",
+    "object_repr": "Prep12",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 37,
+  "fields": {
+    "action_time": "2026-05-15T14:52:51.379Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "2",
+    "object_repr": "Prepodavatel12",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 38,
+  "fields": {
+    "action_time": "2026-05-17T09:48:32.120Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "4",
+    "object_repr": "a123rt",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 39,
+  "fields": {
+    "action_time": "2026-05-17T09:49:16.212Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "4",
+    "object_repr": "a123rt",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Patronymic\", \"Email address\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 40,
+  "fields": {
+    "action_time": "2026-05-17T10:06:52.278Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "8",
+    "object_repr": "Второй курс",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 41,
+  "fields": {
+    "action_time": "2026-05-17T10:06:52.278Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "7",
+    "object_repr": "Второй курс",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 42,
+  "fields": {
+    "action_time": "2026-05-17T10:06:52.279Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "6",
+    "object_repr": "Второй курс",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 43,
+  "fields": {
+    "action_time": "2026-05-17T10:06:52.279Z",
+    "user": 1,
+    "content_type": 8,
+    "object_id": "5",
+    "object_repr": "Второй курс",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 44,
+  "fields": {
+    "action_time": "2026-05-18T07:13:02.177Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "5",
+    "object_repr": "user12",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 45,
+  "fields": {
+    "action_time": "2026-05-25T09:26:50.117Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "6",
+    "object_repr": "student2",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 46,
+  "fields": {
+    "action_time": "2026-05-25T09:27:18.972Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "6",
+    "object_repr": "student2",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\", \"Patronymic\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 47,
+  "fields": {
+    "action_time": "2026-06-02T19:18:37.490Z",
+    "user": 1,
+    "content_type": 6,
+    "object_id": "1",
+    "object_repr": "Admin",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "c5jl5plejbwiygv2u1bk6f607yjg5evq",
+  "fields": {
+    "session_data": "e30:1wNtHN:7qSl4oYhHeGY3rLrAY33r7jddruaXLzkaAm-01DVreE",
+    "expire_date": "2026-05-29T14:12:41.994Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "cb8zhrjmiu17a3urxfe5l3z8rz3c4faa",
+  "fields": {
+    "session_data": "e30:1wNtti:Z86mULB2jtm_uXIjQkevluSY_SVPxMSYo4_hrdcNdVI",
+    "expire_date": "2026-05-29T14:52:18.121Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "fehc0d8rdb14b8rpxmbixi7t1l0w8shy",
+  "fields": {
+    "session_data": "e30:1wNttD:M84BHjkmSowrhb-feWR68fQ7_vyJUguNc7SJBuqE2EI",
+    "expire_date": "2026-05-29T14:51:47.785Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "izm97m7irfwu7y8b87j38c5fajd5pb4y",
+  "fields": {
+    "session_data": ".eJxVjEsOwjAMBe-SNYpMnKQpS_Y9Q2THLimgVupnhbg7VOoCtm9m3stk2taat0XnPIi5mLM5_W5M5aHjDuRO422yZRrXeWC7K_agi-0m0ef1cP8OKi31Wzt1kRMAupCCavLYBII2evFUOAK2QMSASTmyMDof-9JLE0DaviCa9wfIqDfE:1wUUVK:c38ay9eBz3X4dgrJFVfzdw2u5h7HzCzbAcdWZpvGmH0",
+    "expire_date": "2026-06-16T19:10:22.645Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ndpwh8v4936vuw0o3k9lvai2fq1pl3ff",
+  "fields": {
+    "session_data": "e30:1wNtyD:DpuOE08TYN9YttkbwWR2DEF68JoAE_db2yz1QMk48X4",
+    "expire_date": "2026-05-29T14:56:57.274Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "pz8q16oag66a2p1afwl0bzcv2hytwyqx",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyELLRQ8eu83ENhdpGpoUtqT8d9tkx70OPPezFuEuK0lbI2XMJG4CiMuv12K-OR6AHrEep8lznVdpiQPRZ60yXEmft1O9--gxFb2tfZMBqKjnjEzYO-Ts-gspAzcOTdkpQfFFgGJUqcZowLKbg_WGp_F5wsG1jj9:1wPoAB:0xFVCYUYID_C5qmvZV-OGi4Je01csJ0SBGN0HpPr8HU",
+    "expire_date": "2026-06-03T21:09:11.025Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "s50q0h71y2mdleg0sakvb9z137c8gxoz",
+  "fields": {
+    "session_data": "e30:1wTfag:duYqzUSHM_RMuOGhcGd1Z-8gQoTplQ-OP7DAEEycpok",
+    "expire_date": "2026-06-14T12:48:30.864Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "uvkqvexby228bop7e2gazpihrxx65scx",
+  "fields": {
+    "session_data": ".eJxVjMEOwiAQRP-FsyELLRQ8eu83ENhdpGpoUtqT8d9tkx70OPPezFuEuK0lbI2XMJG4CiMuv12K-OR6AHrEep8lznVdpiQPRZ60yXEmft1O9--gxFb2tfZMBqKjnjEzYO-Ts-gspAzcOTdkpQfFFgGJUqcZowLKbg_WGp_F5wsG1jj9:1wPncG:cGzvvntQSBWyMbe_EsGAh4d4s7V_aPsUKXN7OFMaINU",
+    "expire_date": "2026-06-03T20:34:08.282Z"
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$SosmYbRh46pQv4gK7LKr74$aJ+cGVSWYLalMaCzK+ON30tcEM3pvqYUj/QGYE8Wyqc=",
+    "last_login": "2026-06-02T19:10:22.640Z",
+    "is_superuser": true,
+    "username": "Admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-03T18:21:44.705Z",
+    "role": "admin",
+    "patronymic": "",
+    "avatar": "",
+    "phone": null,
+    "bio": null,
+    "email_notifications": true,
+    "push_notifications": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$TwhK8r8CJKsIqMMENT42iX$rZc/TwbP4qpKRtwX8PwI0x0GAolOGbd0vHQfuqq7MkQ=",
+    "last_login": "2026-05-31T12:46:22.419Z",
+    "is_superuser": false,
+    "username": "Prepodavatel12",
+    "first_name": "Александр",
+    "last_name": "Иванов",
+    "email": "alek@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-09T09:37:10Z",
+    "role": "teacher",
+    "patronymic": "Александрович",
+    "avatar": "",
+    "phone": null,
+    "bio": null,
+    "email_notifications": true,
+    "push_notifications": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$iT4M6RKa9B2KlSenrxaA6P$bjIKSDqAzw7LEEJwkw4lN1On//rhbMfdScpzyA6Cqd0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Prep12",
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "email": "ivanov@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-15T14:14:54Z",
+    "role": "teacher",
+    "patronymic": "Иванович",
+    "avatar": "",
+    "phone": null,
+    "bio": null,
+    "email_notifications": true,
+    "push_notifications": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$LPvLLOpsA7eX8X7gU24gnf$89b5GNMw2rOXMTdzP3GywsOokHx0rU4Wv5AtdOIJ8VU=",
+    "last_login": "2026-05-18T07:11:22.180Z",
+    "is_superuser": false,
+    "username": "a123rt",
+    "first_name": "Максим",
+    "last_name": "Иванов",
+    "email": "alek@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-17T09:48:31Z",
+    "role": "student",
+    "patronymic": "Иванович",
+    "avatar": "",
+    "phone": "",
+    "bio": "",
+    "email_notifications": false,
+    "push_notifications": false,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$A6o4uHBAh7LOaxWgwkK3ve$tHDgvDF1zTQkdpA1H4+TdF092nIE83solSvhLj/5E0M=",
+    "last_login": "2026-05-20T21:09:11.024Z",
+    "is_superuser": false,
+    "username": "user12",
+    "first_name": "Сергей",
+    "last_name": "Потряхов",
+    "email": "potryahov@mail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-17T22:43:26Z",
+    "role": "student",
+    "patronymic": "Антонович",
+    "avatar": "",
+    "phone": null,
+    "bio": null,
+    "email_notifications": true,
+    "push_notifications": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$AhU9fKCOuJKnZ8ovScuGIW$Gu4iKpGq6HPhS3uTSTEnI7H69O8OISOWb+lNH7vSflU=",
+    "last_login": "2026-05-29T09:44:20.637Z",
+    "is_superuser": false,
+    "username": "student2",
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-25T09:26:49Z",
+    "role": "student",
+    "patronymic": "Иванович",
+    "avatar": "",
+    "phone": null,
+    "bio": null,
+    "email_notifications": true,
+    "push_notifications": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$c5mOCZtJRCOMExoSxoZjH5$N/aGbs6B28BFKRPvohsP1cby5RRO3l1qBmZmbyXKuaU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "Student3",
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "email": "test@mail.ru",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-31T13:08:35.705Z",
+    "role": "student",
+    "patronymic": "Иванович",
+    "avatar": "",
+    "phone": null,
+    "bio": null,
+    "email_notifications": true,
+    "push_notifications": true,
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 1,
+  "fields": {
+    "title": "Python",
+    "description": "Этот курс посвящен основам языка программирования Python",
+    "author": 2,
+    "difficulty_level": 5,
+    "is_published": true,
+    "created_at": "2026-05-03T18:48:29.302Z",
+    "updated_at": "2026-05-17T12:18:02.710Z",
+    "image": "courses/pyton.png"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 9,
+  "fields": {
+    "title": "Второй курс",
+    "description": "Второй курс",
+    "author": 2,
+    "difficulty_level": 4,
+    "is_published": true,
+    "created_at": "2026-05-17T10:08:57.167Z",
+    "updated_at": "2026-05-17T12:02:30.179Z",
+    "image": "default/course.jpg"
+  }
+},
+{
+  "model": "courses.course",
+  "pk": 10,
+  "fields": {
+    "title": "Информатика",
+    "description": "Информатика",
+    "author": 2,
+    "difficulty_level": 1,
+    "is_published": true,
+    "created_at": "2026-05-18T07:08:06.413Z",
+    "updated_at": "2026-05-18T07:08:06.413Z",
+    "image": "courses/Go_Logo_Blue_kzPiRAv.svg.png"
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 1,
+  "fields": {
+    "course_id": 1,
+    "title": "Основы Python",
+    "description": "Основы языка программирования Python",
+    "order_index": 1,
+    "difficulty_level": 5,
+    "created_at": "2026-05-09T17:12:02.308Z",
+    "estimated_hours": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 5,
+  "fields": {
+    "course_id": 9,
+    "title": "Первый",
+    "description": "Первый",
+    "order_index": 1,
+    "difficulty_level": 5,
+    "created_at": "2026-05-17T12:02:05.334Z",
+    "estimated_hours": 1
+  }
+},
+{
+  "model": "courses.module",
+  "pk": 6,
+  "fields": {
+    "course_id": 10,
+    "title": "Первый модул",
+    "description": "1",
+    "order_index": 1,
+    "difficulty_level": 5,
+    "created_at": "2026-05-18T07:08:43.424Z",
+    "estimated_hours": 1
+  }
+},
+{
+  "model": "courses.lesson",
+  "pk": 1,
+  "fields": {
+    "module_id": 1,
+    "title": "Построчное считывание в Python",
+    "content": "Для ввода данных в программу на Python мы используем функцию input(). Она считывает полностью ровно одну строку.\r\n\r\nВот программа, которая считывает имя пользователя и приветствует его:\r\n\r\nprint('Как вас зовут?')\r\nname = input() \r\nprint('Здравствуйте, ' + name + '!')\r\n\r\n                  \r\n\r\n\r\nМы будем писать программы, которые считывают данные, перерабатывают их и выводят какой-то результат. При запуске на компьютере такие программы считывают данные, которые пользователь вводит с клавиатуры, а результат выводят на экран.\r\n\r\nПопробуем написать программу, которая считывает два числа и выводит их сумму. Для этого считаем два числа и сохраним их в переменные a и b, пользуясь оператором присваивания =. Слева от оператора присваивания в программах на Питоне ставится имя переменной - например, строка из латинских букв. Справа от оператора присваивания ставится любое выражение. Имя станет указывать на результат вычисления выражения. \r\n\r\na = input()\r\nb = input()\r\ns = a + b\r\nprint(s)\r\n\r\n                  \r\nЕсли мы запустим программу, подав a = 5, b = 7 с консоли, то программа выведет 57, а не 12.",
+    "content_type": "Текст",
+    "video_url": null,
+    "order_index": 1,
+    "created_at": "2026-05-09T17:46:12.823Z"
+  }
+},
+{
+  "model": "courses.lesson",
+  "pk": 2,
+  "fields": {
+    "module_id": 1,
+    "title": "Как Python воспринимает ввод",
+    "content": "Всё, что пользователь печатает в консоли, Python воспринимает как текст. В примере на предыдущем шаге мы получили такой результат потому, что Питон в третьей строчке «сложил» две строки, а не два числа. В Питоне две строки складываются так: к первой строке приписывается вторая. Такая операция ещё называется конкатенацией. \r\n\r\nВ Python все данные называются объектами. Число 2 представляется объектом число 2, строка 'hello' - это объект «строка 'hello'». Каждый объект относится к какому-то типу. Строки хранятся в объектах типа str, целые числа хранятся в объектах типа int, дробные числа (вещественные числа) - в объектах типа float.\r\n\r\nТип объекта определяет, какие действия можно делать с объектами этого типа. Чтобы преобразовать строку из цифр в целое число, воспользуемся функцией int(). Например, int('23') вернет число 23. Вот пример правильной программы, которая считывает два числа и выводит их сумму:\r\n\r\na = int(input())\r\nb = int(input())\r\ns = a + b\r\nprint(s)",
+    "content_type": "Текст",
+    "video_url": null,
+    "order_index": 2,
+    "created_at": "2026-05-09T18:19:43.534Z"
+  }
+},
+{
+  "model": "courses.lesson",
+  "pk": 3,
+  "fields": {
+    "module_id": 1,
+    "title": "Стандартные арифметические операции",
+    "content": "Арифметические операции - основа любой программы, связанной с вычислениями. В языке программирования Python работа с числами интуитивно понятна и проста.\r\nprint(3 + 5) # Вывод: 8\r\nprint(10 - 4) # Вывод: 6\r\nprint(7 * 6) # Вывод: 42\r\nprint(8 / 2) # Вывод: 4.0\r\nprint(9 // 2) # Вывод: 4\r\nprint(9 % 2) # Вывод: 1\r\nprint(2**3) # Вывод: 8",
+    "content_type": "Текст",
+    "video_url": null,
+    "order_index": 3,
+    "created_at": "2026-05-09T18:20:55.370Z"
+  }
+},
+{
+  "model": "courses.user_progerss",
+  "pk": 1,
+  "fields": {
+    "user_id": 1,
+    "module_id": 1,
+    "lesson": null,
+    "score": 0,
+    "attempts": 0,
+    "time_spent": 0,
+    "status": "",
+    "created_at": "2026-05-11T16:32:22.796Z",
+    "completed_at": null,
+    "weak_topics": [],
+    "improvement_rate": 0.0
+  }
+},
+{
+  "model": "courses.user_progerss",
+  "pk": 2,
+  "fields": {
+    "user_id": 2,
+    "module_id": 1,
+    "lesson": null,
+    "score": 100,
+    "attempts": 8,
+    "time_spent": 0,
+    "status": "",
+    "created_at": "2026-05-17T12:48:04.508Z",
+    "completed_at": "2026-05-20T19:30:59.774Z",
+    "weak_topics": [],
+    "improvement_rate": 100.0
+  }
+},
+{
+  "model": "courses.user_progerss",
+  "pk": 3,
+  "fields": {
+    "user_id": 4,
+    "module_id": 1,
+    "lesson": null,
+    "score": 0,
+    "attempts": 0,
+    "time_spent": 0,
+    "status": "",
+    "created_at": "2026-05-17T20:21:27.218Z",
+    "completed_at": null,
+    "weak_topics": [],
+    "improvement_rate": 0.0
+  }
+},
+{
+  "model": "courses.user_progerss",
+  "pk": 4,
+  "fields": {
+    "user_id": 5,
+    "module_id": 1,
+    "lesson": null,
+    "score": 100,
+    "attempts": 2,
+    "time_spent": 0,
+    "status": "",
+    "created_at": "2026-05-18T07:14:20.972Z",
+    "completed_at": "2026-05-19T17:46:04.921Z",
+    "weak_topics": [
+      "Какой тип данных возвращает функция input()?",
+      "Какая функция используется для ввода данных в Pyth"
+    ],
+    "improvement_rate": 67.0
+  }
+},
+{
+  "model": "courses.user_progerss",
+  "pk": 37,
+  "fields": {
+    "user_id": 6,
+    "module_id": 1,
+    "lesson": null,
+    "score": 0,
+    "attempts": 6,
+    "time_spent": 0,
+    "status": "",
+    "created_at": "2026-05-25T09:28:40.122Z",
+    "completed_at": null,
+    "weak_topics": [],
+    "improvement_rate": 0.0
+  }
+},
+{
+  "model": "courses.test",
+  "pk": 1,
+  "fields": {
+    "module_id": 1,
+    "title": "Тест по основам Python",
+    "passing_score": 60,
+    "max_score": 100,
+    "created_at": "2026-05-11T16:20:42.410Z"
+  }
+},
+{
+  "model": "courses.question",
+  "pk": 1,
+  "fields": {
+    "test_id": 1,
+    "question_text": "Какая функция используется для ввода данных в Python?",
+    "question_type": "single",
+    "points": 1,
+    "topic": null,
+    "keyword": null
+  }
+},
+{
+  "model": "courses.question",
+  "pk": 2,
+  "fields": {
+    "test_id": 1,
+    "question_text": "Что выведет print(9 // 2)?",
+    "question_type": "single",
+    "points": 1,
+    "topic": null,
+    "keyword": null
+  }
+},
+{
+  "model": "courses.question",
+  "pk": 3,
+  "fields": {
+    "test_id": 1,
+    "question_text": "Какой тип данных возвращает функция input()?",
+    "question_type": "single",
+    "points": 1,
+    "topic": null,
+    "keyword": null
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 1,
+  "fields": {
+    "qustion_id": 1,
+    "answer_text": "input()",
+    "is_correct": true
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 2,
+  "fields": {
+    "qustion_id": 1,
+    "answer_text": "print()",
+    "is_correct": false
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 3,
+  "fields": {
+    "qustion_id": 1,
+    "answer_text": "int()",
+    "is_correct": false
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 4,
+  "fields": {
+    "qustion_id": 2,
+    "answer_text": "4",
+    "is_correct": true
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 5,
+  "fields": {
+    "qustion_id": 2,
+    "answer_text": "4.5",
+    "is_correct": false
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 6,
+  "fields": {
+    "qustion_id": 2,
+    "answer_text": "5",
+    "is_correct": false
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 7,
+  "fields": {
+    "qustion_id": 3,
+    "answer_text": "str",
+    "is_correct": true
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 8,
+  "fields": {
+    "qustion_id": 3,
+    "answer_text": "int",
+    "is_correct": false
+  }
+},
+{
+  "model": "courses.answer",
+  "pk": 9,
+  "fields": {
+    "qustion_id": 3,
+    "answer_text": "float",
+    "is_correct": false
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 1,
+  "fields": {
+    "user_id": 5,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 2,
+    "is_correct": false,
+    "created_at": "2026-05-19T17:45:47.100Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 2,
+  "fields": {
+    "user_id": 5,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 4,
+    "is_correct": true,
+    "created_at": "2026-05-19T17:45:47.110Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 3,
+  "fields": {
+    "user_id": 5,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 8,
+    "is_correct": false,
+    "created_at": "2026-05-19T17:45:47.113Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 4,
+  "fields": {
+    "user_id": 5,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 1,
+    "is_correct": true,
+    "created_at": "2026-05-19T17:46:04.904Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 5,
+  "fields": {
+    "user_id": 5,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 4,
+    "is_correct": true,
+    "created_at": "2026-05-19T17:46:04.908Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 6,
+  "fields": {
+    "user_id": 5,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 7,
+    "is_correct": true,
+    "created_at": "2026-05-19T17:46:04.910Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 7,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 1,
+    "is_correct": true,
+    "created_at": "2026-05-20T13:29:03.136Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 8,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 5,
+    "is_correct": false,
+    "created_at": "2026-05-20T13:29:03.142Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 9,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 8,
+    "is_correct": false,
+    "created_at": "2026-05-20T13:29:03.144Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 10,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 2,
+    "is_correct": false,
+    "created_at": "2026-05-20T14:21:39.378Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 11,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 5,
+    "is_correct": false,
+    "created_at": "2026-05-20T14:21:39.386Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 12,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 7,
+    "is_correct": true,
+    "created_at": "2026-05-20T14:21:39.388Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 13,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 1,
+    "is_correct": true,
+    "created_at": "2026-05-20T14:21:51.771Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 14,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-20T14:21:51.776Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 15,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-20T14:21:51.779Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 16,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-20T14:22:33.348Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 17,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-20T14:22:33.353Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 18,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-20T14:22:33.356Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 19,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:46:57.597Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 20,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:46:57.602Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 21,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:46:57.603Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 22,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 2,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:47:46.896Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 23,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:47:46.900Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 24,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:47:46.902Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 25,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:49:51.289Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 26,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:49:51.292Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 27,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-20T16:49:51.295Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 28,
+  "fields": {
+    "user_id": 2,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 1,
+    "is_correct": true,
+    "created_at": "2026-05-20T19:30:59.758Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 29,
+  "fields": {
+    "user_id": 2,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 4,
+    "is_correct": true,
+    "created_at": "2026-05-20T19:30:59.760Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 30,
+  "fields": {
+    "user_id": 2,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 7,
+    "is_correct": true,
+    "created_at": "2026-05-20T19:30:59.761Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 31,
+  "fields": {
+    "user_id": 6,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 2,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:28:40.109Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 32,
+  "fields": {
+    "user_id": 6,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:28:40.118Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 33,
+  "fields": {
+    "user_id": 6,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:28:40.119Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 34,
+  "fields": {
+    "user_id": 6,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:28:52.096Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 35,
+  "fields": {
+    "user_id": 6,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:28:52.100Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 36,
+  "fields": {
+    "user_id": 6,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:28:52.102Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 37,
+  "fields": {
+    "user_id": 6,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:29:01.751Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 38,
+  "fields": {
+    "user_id": 6,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:29:01.756Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 39,
+  "fields": {
+    "user_id": 6,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-25T09:29:01.756Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 40,
+  "fields": {
+    "user_id": 6,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:46:31.259Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 41,
+  "fields": {
+    "user_id": 6,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:46:31.276Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 42,
+  "fields": {
+    "user_id": 6,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:46:31.278Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 43,
+  "fields": {
+    "user_id": 6,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:47:31.478Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 44,
+  "fields": {
+    "user_id": 6,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:47:31.484Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 45,
+  "fields": {
+    "user_id": 6,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:47:31.486Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 46,
+  "fields": {
+    "user_id": 6,
+    "question": 1,
+    "module_id": 1,
+    "selected_answer": 3,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:47:52.586Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 47,
+  "fields": {
+    "user_id": 6,
+    "question": 2,
+    "module_id": 1,
+    "selected_answer": 6,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:47:52.592Z"
+  }
+},
+{
+  "model": "courses.testresult",
+  "pk": 48,
+  "fields": {
+    "user_id": 6,
+    "question": 3,
+    "module_id": 1,
+    "selected_answer": 9,
+    "is_correct": false,
+    "created_at": "2026-05-29T09:47:52.595Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 1,
+  "fields": {
+    "user_id": 4,
+    "lesson_id": 1,
+    "is_completed": true,
+    "completed_at": "2026-05-17T21:24:56.816Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 2,
+  "fields": {
+    "user_id": 4,
+    "lesson_id": 2,
+    "is_completed": true,
+    "completed_at": "2026-05-17T21:25:01.592Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 3,
+  "fields": {
+    "user_id": 4,
+    "lesson_id": 3,
+    "is_completed": true,
+    "completed_at": "2026-05-17T21:25:03.150Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 4,
+  "fields": {
+    "user_id": 5,
+    "lesson_id": 1,
+    "is_completed": true,
+    "completed_at": "2026-05-18T07:14:04.152Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 5,
+  "fields": {
+    "user_id": 5,
+    "lesson_id": 2,
+    "is_completed": true,
+    "completed_at": "2026-05-18T07:14:09.084Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 6,
+  "fields": {
+    "user_id": 5,
+    "lesson_id": 3,
+    "is_completed": true,
+    "completed_at": "2026-05-18T07:14:10.615Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 7,
+  "fields": {
+    "user_id": 2,
+    "lesson_id": 1,
+    "is_completed": true,
+    "completed_at": "2026-05-20T13:20:36.835Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 8,
+  "fields": {
+    "user_id": 2,
+    "lesson_id": 2,
+    "is_completed": true,
+    "completed_at": "2026-05-20T13:25:26.776Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 9,
+  "fields": {
+    "user_id": 2,
+    "lesson_id": 3,
+    "is_completed": true,
+    "completed_at": "2026-05-20T13:25:29.435Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 10,
+  "fields": {
+    "user_id": 6,
+    "lesson_id": 1,
+    "is_completed": true,
+    "completed_at": "2026-05-25T09:28:25.063Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 11,
+  "fields": {
+    "user_id": 6,
+    "lesson_id": 2,
+    "is_completed": true,
+    "completed_at": "2026-05-25T09:28:26.594Z"
+  }
+},
+{
+  "model": "courses.lessonprogress",
+  "pk": 12,
+  "fields": {
+    "user_id": 6,
+    "lesson_id": 3,
+    "is_completed": true,
+    "completed_at": "2026-05-25T09:28:27.813Z"
+  }
+},
+{
+  "model": "courses.modulematerial",
+  "pk": 1,
+  "fields": {
+    "module": 1,
+    "title": "Основы Python",
+    "material_type": "video",
+    "url": "https://www.youtube.com/watch?v=Gmh3sjodc_o",
+    "content": "<p><strong>Ввод данных и арифметические оперции</strong></p>",
+    "order_index": 1,
+    "is_required": true,
+    "is_advanced": false
+  }
+},
+{
+  "model": "courses.modulematerial",
+  "pk": 2,
+  "fields": {
+    "module": 1,
+    "title": "Основы python",
+    "material_type": "interactive",
+    "url": "https://docs.python.org/3/library/decimal.html",
+    "content": "<p>В Python есть модули <code>decimal</code> и <code>fractions</code> для точных вычислений.</p>\r\n<pre><code>\r\nfrom decimal import Decimal\r\nfrom fractions import Fraction\r\n\r\nprint(Decimal('0.1') + Decimal('0.2'))   # 0.3 без ошибок округления\r\nprint(Fraction(1, 3) + Fraction(2, 5))   # 11/15\r\n</code></pre>\r\n<p>Изучите документацию <a href=\"https://docs.python.org/3/library/decimal.html\" target=\"_blank\">decimal</a> и <a href=\"https://docs.python.org/3/library/fractions.html\" target=\"_blank\">fractions</a>.</p>",
+    "order_index": 1,
+    "is_required": false,
+    "is_advanced": true
+  }
+},
+{
+  "model": "courses.studentmaterialprogress",
+  "pk": 1,
+  "fields": {
+    "student": 2,
+    "material": 1,
+    "viewed": true,
+    "viewed_at": "2026-05-20T14:39:55.620Z"
+  }
+},
+{
+  "model": "courses.studentmaterialprogress",
+  "pk": 2,
+  "fields": {
+    "student": 6,
+    "material": 1,
+    "viewed": true,
+    "viewed_at": "2026-05-29T09:46:02.819Z"
+  }
+},
+{
+  "model": "adaptive_engine.adaptiverecomendation",
+  "pk": 42,
+  "fields": {
+    "user_id": 5,
+    "module_id": 1,
+    "recommendation_type": "repeat",
+    "recommendation_description": 

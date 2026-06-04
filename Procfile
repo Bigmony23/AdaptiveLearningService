@@ -1,0 +1,1 @@
+web: gunicorn AdaptiveLearningService.wsgi --log-file -

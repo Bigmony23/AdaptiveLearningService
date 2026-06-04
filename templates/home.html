@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная — AdaptLearn{% endblock %}
+
+{% block content %}
+<!-- Hero секция -->
+<div class="container">
+    <div class="hero-section">
+        <h1 class="display-4 fw-bold mb-4">Добро пожаловать в AdaptLearn</h1>
+        <p class="lead mb-4">
+            Персонализированное обучение на основе анализа ваших результатов. 
+            
+        </p>
+        {% if not request.user.is_authenticated %}
+        <div class="d-flex gap-3 justify-content-center">
+            <a href="{% url 'register' %}" class="btn btn-primary btn-lg px-4">
+                <i class="fas fa-graduation-cap me-2"></i>Начать обучение
+            </a>
+            <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg px-4">
+                <i class="fas fa-sign-in-alt me-2"></i>Войти
+            </a>
+        </div>
+        {% else %}
+        <a href="{% url 'courses' %}" class="btn btn-primary btn-lg px-5">
+            <i class="fas fa-arrow-right me-2"></i>Перейти к курсам
+        </a>
+        {% endif %}
+    </div>
+
+    <!-- Преимущества -->
+    <div class="row g-4 my-5">
+        <div class="col-md-4">
+            <div class="feature-card glass-effect h-100">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h4 class="mb-3">Адаптивное обучение</h4>
+                <p>Система анализирует ваши результаты и формирует персональную траекторию обучения.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card glass-effect h-100">
+                <div class="feature-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <h4 class="mb-3">Отслеживание прогресса</h4>
+                <p>Следите за своим прогрессом в личном кабинете и получайте рекомендации.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="feature-card glass-effect h-100">
+                <div class="feature-icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+                <h4 class="mb-3">Разнообразный контент</h4>
+                <p>Текстовые материалы, видео и тесты для эффективного усвоения знаний.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Популярные курсы -->
+    <div class="section-header text-center">
+        <h2 class="mb-3">Популярные курсы</h2>
+        <p class="mb-5">Самые востребованные направления от лучших преподавателей</p>
+    </div>
+    
+    <div class="row g-4">
+        {% for course in popular_courses %}
+        <div class="col-md-6 col-lg-4">
+            <div class="course-card glass-effect h-100">
+                {% if course.image %}
+                <div class="course-image">
+                    <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+                    <div class="course-overlay">
+                        <a href="{% url 'course_detail' id=course.id %}" class="btn btn-light">
+                            Подробнее <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+                {% else %}
+                <div class="course-image bg-gradient">
+                    <div class="d-flex align-items-center justify-content-center h-100">
+                        <i class="fas fa-book-open fa-3x text-white-50"></i>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="card-title mb-0">{{ course.title }}</h5>
+                        <span class="difficulty-badge difficulty-{{ course.difficulty_level|lower }}">
+                            {{ course.get_difficulty_level_display }}
+                        </span>
+                    </div>
+                    <p class="card-text small">{{ course.description|truncatewords:15 }}</p>
+                </div>
+                <div class="card-footer bg-transparent border-0 pb-4 px-4">
+                    <a href="{% url 'course_detail' id=course.id %}" class="btn btn-outline-primary w-100">
+                        Начать обучение <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12 text-center">
+            <div class="alert glass-effect">
+                <i class="fas fa-info-circle me-2"></i>Курсов пока нет
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if popular_courses.count > 3 %}
+    <div class="text-center mt-5">
+        <a href="{% url 'courses' %}" class="btn btn-primary btn-lg px-5">
+            Все курсы <i class="fas fa-arrow-right ms-2"></i>
+        </a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

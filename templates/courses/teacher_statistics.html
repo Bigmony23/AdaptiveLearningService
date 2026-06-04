@@ -1,0 +1,290 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Статистика курса — AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+
+    <!-- Заголовок -->
+    <div class="glass-effect p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+                <h2 class="mb-1">
+                    <i class="fas fa-chart-line me-2"></i>Статистика курса
+                </h2>
+                <p class="text-muted mb-0">{{ course.title }}</p>
+                <small class="text-muted">Автор: {{ course.author.get_full_name }}</small>
+            </div>
+            <div class="d-flex gap-2 mt-2 mt-md-0">
+                <a href="{% url 'course_edit' course.id %}" class="btn btn-outline-primary">
+                    <i class="fas fa-edit me-2"></i>Редактировать курс
+                </a>
+                <a href="{% url 'teacher_cabinet' %}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Назад
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Общая статистика курса -->
+<!-- Общая статистика курса -->
+<div class="row g-3 mb-4">
+    <div class="col-md-3">
+        <div class="glass-effect p-3 text-center">
+            <div class="analytics-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <h2 class="mb-0 mt-2">{{ course_stats.total_modules }}</h2>
+            <small class="text-muted">Всего модулей</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-effect p-3 text-center">
+            <div class="analytics-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h2 class="mb-0 mt-2">{{ course_stats.total_students }}</h2>
+            <small class="text-muted">Всего студентов</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-effect p-3 text-center">
+            <div class="analytics-icon">
+                <i class="fas fa-percent"></i>
+            </div>
+            <h2 class="mb-0 mt-2">{{ course_stats.avg_score }}%</h2>
+            <small class="text-muted">Средний балл</small>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="glass-effect p-3 text-center">
+            <div class="analytics-icon">
+                <i class="fas fa-trophy"></i>
+            </div>
+            <h2 class="mb-0 mt-2">{{ course_stats.total_passed }}</h2>
+            <small class="text-muted">Успешно сдали</small>
+        </div>
+    </div>
+</div>
+
+    <!-- Статистика по модулям -->
+    {% for stat in modules_stats %}
+    <div class="glass-effect p-4 mb-4">
+        <!-- Заголовок модуля -->
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-3">
+            <h4 class="mb-2 mb-md-0">
+                <span class="badge bg-primary me-2">{{ forloop.counter }}</span>
+                {{ stat.module.title }}
+            </h4>
+            <div class="d-flex gap-2">
+                <a href="{% url 'module_statistics' course_id=course.id module_id=stat.module.id %}"
+                   class="btn btn-sm btn-outline-info">
+                    <i class="fas fa-chart-simple me-1"></i>Детальная статистика
+                </a>
+                <a href="{% url 'module_manage' course_id=course.id module_id=stat.module.id %}"
+                   class="btn btn-sm btn-outline-warning">
+                    <i class="fas fa-edit me-1"></i>Управление
+                </a>
+            </div>
+        </div>
+
+        <!-- Статистика модуля -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-value">{{ stat.total_students }}</div>
+                    <div class="stat-label">Студентов</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-value">{{ stat.passed_count }}</div>
+                    <div class="stat-label">Сдали тест</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-value">{{ stat.avg_score }}%</div>
+                    <div class="stat-label">Средний балл</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="stat-card text-center">
+                    <div class="stat-value">{{ stat.pass_rate }}%</div>
+                    <div class="stat-label">Успеваемость</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Прогресс-бар -->
+        <div class="mb-4">
+            <div class="d-flex justify-content-between mb-1">
+                <small><i class="fas fa-chart-line me-1"></i>Процент сдачи теста</small>
+                <small><strong>{{ stat.pass_rate }}%</strong></small>
+            </div>
+            <div class="progress" style="height: 10px; border-radius: 10px;">
+                <div class="progress-bar 
+                    {% if stat.pass_rate >= 70 %}bg-success
+                    {% elif stat.pass_rate >= 40 %}bg-warning
+                    {% else %}bg-danger{% endif %}"
+                    style="width: {{ stat.pass_rate }}%; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Таблица результатов -->
+        {% if stat.progress_records %}
+        <h5 class="mb-3">
+            <i class="fas fa-table me-2"></i>Результаты студентов
+        </h5>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Студент</th>
+                        <th>Email</th>
+                        <th>Балл</th>
+                        <th>Попытки</th>
+                        <th>Статус</th>
+                        <th>Завершён</th>
+                        <th>Слабые темы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in stat.progress_records|slice:":10" %}
+                    <tr>
+                        <td>
+                            <i class="fas fa-user-graduate me-1"></i>
+                            {{ p.user_id.get_full_name|default:p.user_id.username }}
+                        </td>
+                        <td>{{ p.user_id.email }}</td>
+                        <td>
+                            <strong class="{% if p.score >= 85 %}text-success{% elif p.score >= 60 %}text-info{% else %}text-danger{% endif %}">
+                                {{ p.score|floatformat:0 }}%
+                            </strong>
+                        </td>
+                        <td>{{ p.attempts }}</td>
+                        <td>
+                            {% if p.score >= 85 %}
+                                <span class="badge bg-success">Отлично 🌟</span>
+                            {% elif p.score >= 60 %}
+                                <span class="badge bg-info">Пройден ✅</span>
+                            {% else %}
+                                <span class="badge bg-danger">Не пройден ❌</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if p.completed_at %}
+                                {{ p.completed_at|date:"d.m.Y" }}
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+                      <!-- В teacher_statistics.html, в колонке "Слабые темы" -->
+                            <td>
+                                {% if p.weak_topics %}
+                                    {% for topic in p.weak_topics %}
+                                        <span class="badge bg-warning text-dark">
+                                            {% with words=topic.split %}
+                                                {{ words|slice:":2"|join:" " }}{% if topic|length > words|slice:":2"|join:" "|length %}...{% endif %}
+                                            {% endwith %}
+                                        </span>
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="text-muted">—</span>
+                                {% endif %}
+                            </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% if stat.progress_records.count > 10 %}
+            <div class="text-center mt-2">
+                <small class="text-muted">
+                    Показаны первые 10 из {{ stat.progress_records.count }} студентов
+                </small>
+            </div>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="empty-progress text-center py-4">
+            <i class="fas fa-users fa-3x mb-3 text-muted"></i>
+            <p class="text-muted mb-0">Студенты ещё не проходили этот модуль</p>
+        </div>
+        {% endif %}
+
+        <!-- Кнопки управления тестом -->
+        {% if stat.test %}
+        <div class="d-flex gap-2 mt-3">
+            <a href="{% url 'test_edit' course_id=course.id module_id=stat.module.id test_id=stat.test.id %}"
+               class="btn btn-outline-primary btn-sm">
+                <i class="fas fa-edit me-1"></i>Редактировать тест
+            </a>
+            <a href="{% url 'module_manage' course_id=course.id module_id=stat.module.id %}"
+               class="btn btn-outline-success btn-sm">
+                <i class="fas fa-question-circle me-1"></i>Управление вопросами
+            </a>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.table {
+    background: transparent;
+}
+
+.table-dark {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.table-dark td, .table-dark th {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.table-dark th {
+    background: rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+}
+
+.table-hover tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.empty-progress {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 15px;
+}
+
+.analytics-icon {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+</style>
+{% endblock %}

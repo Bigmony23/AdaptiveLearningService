@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Тест модуля - AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4 test-container">
+    <div class="glass-effect p-4 p-lg-5">
+        <div class="text-center mb-4 mb-md-5">
+            <h1 class="display-5 mb-3">Итоговый тест модуля</h1>
+            <p class="lead">{{ tests.title }}</p>
+            <div class="test-info d-flex flex-wrap justify-content-center gap-2">
+                <span class="badge bg-primary">Вопросов: {{ questions|length }}</span>
+                <span class="badge bg-warning">Проходной балл: 60%</span>
+                <span class="badge bg-danger">Максимум попыток: 3</span>
+            </div>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            {% for question in questions %}
+            <div class="question-card">
+                <h5>{{ forloop.counter }}. {{ question.question_text }}</h5>
+                
+                <div class="answers-list">
+                    {% for answer in question.answer_set.all %}
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" 
+                               type="radio" 
+                               name="question_{{ question.id }}" 
+                               id="answer_{{ answer.id }}" 
+                               value="{{ answer.id }}" 
+                               required>
+                        <label class="form-check-label" for="answer_{{ answer.id }}">
+                            {{ answer.answer_text }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+
+            {% if questions %}
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-primary btn-lg px-4 px-md-5">
+                    <i class="fas fa-check me-2"></i>Завершить тест
+                </button>
+            </div>
+            {% endif %}
+        </form>
+    </div>
+</div>
+{% endblock %}

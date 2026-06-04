@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Редактирование профиля - AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="glass-effect p-4 p-lg-5">
+                <div class="text-center mb-4">
+                    <div class="profile-avatar mb-3">
+                        {% if user.avatar %}
+                            <img src="{{ user.avatar.url }}" alt="Avatar" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;">
+                        {% else %}
+                            <div class="default-avatar">
+                                <i class="fas fa-user-graduate fa-3x"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <h2 class="mb-2">Редактирование профиля</h2>
+                    <p class="text-muted">Измените личную информацию</p>
+                </div>
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <!-- Личная информация -->
+                    <div class="form-section mb-4">
+                        <h5 class="mb-3">
+                            <i class="fas fa-user me-2"></i>Личная информация
+                        </h5>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                <label for="last_name" class="form-label">Фамилия</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="last_name" 
+                                       name="last_name" 
+                                       value="{{ user.last_name }}"
+                                       placeholder="Введите фамилию">
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="first_name" class="form-label">Имя</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="first_name" 
+                                       name="first_name" 
+                                       value="{{ user.first_name }}"
+                                       placeholder="Введите имя">
+                            </div>
+                            
+                            <div class="col-md-4 mb-3">
+                                <label for="patronymic" class="form-label">Отчество</label>
+                                <input type="text" 
+                                       class="form-control" 
+                                       id="patronymic" 
+                                       name="patronymic" 
+                                       value="{{ user.patronymic|default:'' }}"
+                                       placeholder="Введите отчество">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" 
+                                   class="form-control" 
+                                   id="email" 
+                                   name="email" 
+                                   value="{{ user.email }}"
+                                   placeholder="example@mail.com" 
+                                   required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Имя пользователя</label>
+                            <input type="text" 
+                                   class="form-control" 
+                                   id="username" 
+                                   name="username" 
+                                   value="{{ user.username }}"
+                                   placeholder="username" 
+                                   required>
+                            <small class="text-muted">Используется для входа в систему</small>
+                        </div>
+                    </div>
+
+                    <!-- Аватар -->
+                    <div class="form-section mb-4">
+                        <h5 class="mb-3">
+                            <i class="fas fa-camera me-2"></i>Аватар
+                        </h5>
+                        
+                        <div class="mb-3">
+                            <label for="avatar" class="form-label">Выберите изображение</label>
+                            <input type="file" 
+                                   class="form-control" 
+                                   id="avatar" 
+                                   name="avatar" 
+                                   accept="image/*">
+                            <small class="text-muted">Рекомендуемый размер: 200x200 пикселей</small>
+                        </div>
+                        
+                        {% if user.avatar %}
+                        <div class="current-avatar">
+                            <label class="form-label">Текущий аватар:</label>
+                            <div class="mt-2">
+                                <img src="{{ user.avatar.url }}" alt="Avatar" style="width: 80px; height: 80px; border-radius: 50%;">
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="delete_avatar" name="delete_avatar">
+                                    <label class="form-check-label" for="delete_avatar">
+                                        Удалить аватар
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Контактная информация -->
+                    <div class="form-section mb-4">
+                        <h5 class="mb-3">
+                            <i class="fas fa-address-card me-2"></i>Контактная информация
+                        </h5>
+                        
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Телефон</label>
+                            <input type="tel" 
+                                   class="form-control" 
+                                   id="phone" 
+                                   name="phone" 
+                                   value="{{ user.phone|default:'' }}"
+                                   placeholder="+7 (999) 123-45-67">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="bio" class="form-label">О себе</label>
+                            <textarea class="form-control" 
+                                      id="bio" 
+                                      name="bio" 
+                                      rows="4" 
+                                      placeholder="Расскажите немного о себе...">{{ user.bio|default:'' }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% url 'student_cabinet' %}" class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-2"></i>Назад
+                        </a>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Сохранить изменения
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

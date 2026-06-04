@@ -1,0 +1,341 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Личный кабинет — AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Профиль студента -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <div class="glass-effect p-4 text-center">
+                <div class="profile-avatar mb-3">
+                    {% if request.user.avatar %}
+                        <img src="{{ request.user.avatar.url }}" alt="Avatar" class="rounded-circle" style="width: 120px; height: 120px; object-fit: cover;">
+                    {% else %}
+                        <div class="default-avatar">
+                            <i class="fas fa-user-graduate fa-4x"></i>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Отображение ФИО с отчеством -->
+                <h3 class="mb-1">
+                    {% if request.user.last_name or request.user.first_name or request.user.patronymic %}
+                        {{ request.user.last_name }} {{ request.user.first_name }} {{ request.user.patronymic }}
+                    {% else %}
+                        {{ request.user.username }}
+                    {% endif %}
+                </h3>
+                
+                <p class="text-muted mb-2">{{ request.user.email }}</p>
+                <span class="badge bg-primary mb-3">Студент</span>
+                
+                <div class="profile-actions mt-3">
+                    <a href="{% url 'profile_edit' %}" class="btn btn-outline-primary w-100">
+                        <i class="fas fa-edit me-2"></i>Редактировать профиль
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="glass-effect p-4 h-100">
+                <h4 class="mb-3"><i class="fas fa-chart-line me-2"></i>Общая статистика</h4>
+                
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="stat-card text-center">
+                            <div class="stat-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="stat-value">{{ request.user.date_joined|date:"d.m.Y" }}</div>
+                            <div class="stat-label">Дата регистрации</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card text-center">
+                            <div class="stat-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="stat-value">{{ last_activity|default:"Сегодня" }}</div>
+                            <div class="stat-label">Последняя активность</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Дополнительная информация о пользователе -->
+                <div class="user-details mt-4 pt-3 border-top border-light">
+                    <div class="row">
+                        {% if request.user.phone %}
+                        <div class="col-md-6">
+                            <small class="text-muted">Телефон:</small>
+                            <p class="mb-0">{{ request.user.phone }}</p>
+                        </div>
+                        {% endif %}
+                        {% if request.user.bio %}
+                        <div class="col-md-6">
+                            <small class="text-muted">О себе:</small>
+                            <p class="mb-0">{{ request.user.bio|truncatewords:10 }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Аналитика -->
+    {% if analytics %}
+    <div class="row g-3 mb-4">
+        <div class="col-md-3">
+            <div class="glass-effect p-3 text-center">
+                <div class="analytics-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h2 class="mb-0 mt-2">{{ analytics.total_modules }}</h2>
+                <small class="text-muted">Пройдено модулей</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-effect p-3 text-center">
+                <div class="analytics-icon">
+                    <i class="fas fa-percent"></i>
+                </div>
+                <h2 class="mb-0 mt-2">{{ analytics.average_score|floatformat:1 }}%</h2>
+                <small class="text-muted">Средний балл</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-effect p-3 text-center">
+                <div class="analytics-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 class="mb-0 mt-2">{{ analytics.success_rate|floatformat:0 }}%</h2>
+                <small class="text-muted">Успешность</small>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="glass-effect p-3 text-center">
+                <div class="analytics-icon">
+                    <i class="fas fa-redo-alt"></i>
+                </div>
+                <h2 class="mb-0 mt-2">{{ analytics.total_attempts }}</h2>
+                <small class="text-muted">Всего попыток</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Темп обучения -->
+    {% if pace %}
+    <div class="glass-effect p-3 mb-4">
+        <div class="d-flex align-items-center">
+            <div class="pace-icon me-3">
+                <i class="fas fa-tachometer-alt fa-2x"></i>
+            </div>
+            <div>
+                <strong>Темп обучения:</strong> {{ pace }}
+                {% if pace_score %}
+                <div class="progress mt-2" style="width: 200px; height: 5px;">
+                    <div class="progress-bar bg-success" style="width: {{ pace_score }}%"></div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endif %}
+
+    <!-- Прогресс по модулям -->
+    <div class="glass-effect p-4 mb-4">
+        <h4 class="mb-4">
+            <i class="fas fa-chart-simple me-2"></i>Мой прогресс
+        </h4>
+        
+        {% if progress %}
+            {% for p in progress %}
+            <div class="module-progress mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <div>
+                        <strong>{{ p.module_id.title }}</strong>
+                        {% if p.completed_at %}
+                            <span class="badge bg-success ms-2">Завершён</span>
+                        {% endif %}
+                    </div>
+                    <span class="score-badge">{{ p.score|floatformat:0 }}%</span>
+                </div>
+
+                <!-- Прогресс-бар -->
+                <div class="progress mb-2" style="height: 12px; border-radius: 10px;">
+                    <div class="progress-bar 
+                        {% if p.score >= 85 %}bg-success
+                        {% elif p.score >= 60 %}bg-info
+                        {% else %}bg-danger{% endif %}"
+                        style="width: {{ p.score }}%; border-radius: 10px;">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="progress-details">
+                        <small class="text-muted me-3">
+                            <i class="fas fa-redo-alt me-1"></i>Попыток: {{ p.attempts }}
+                        </small>
+                        {% if p.completed_at %}
+                        <small class="text-muted">
+                            <i class="fas fa-calendar-check me-1"></i>
+                            {{ p.completed_at|date:"d.m.Y H:i" }}
+                        </small>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="progress-badges">
+                        {% if p.score >= 85 %}
+                            <span class="badge bg-success">Отлично 🌟</span>
+                        {% elif p.score >= 60 %}
+                            <span class="badge bg-info">Пройден ✅</span>
+                        {% else %}
+                            <span class="badge bg-danger">Требуется повтор ⚠️</span>
+                        {% endif %}
+
+                        {% if p.improvement_rate and p.improvement_rate > 0 %}
+                            <span class="badge bg-success ms-1">
+                                ↑ +{{ p.improvement_rate|floatformat:1 }}%
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Слабые темы -->
+                {% if p.weak_topics %}
+                <div class="weak-topics mt-3">
+                    <small class="text-muted">
+                        <i class="fas fa-exclamation-triangle me-1"></i>Требуют внимания:
+                    </small>
+                    {% for topic in p.weak_topics %}
+                        <span class="topic-badge">{{ topic }}</span>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="empty-progress text-center py-4">
+                <i class="fas fa-chart-line fa-3x mb-3 text-muted"></i>
+                <p class="text-muted">Вы ещё не начали обучение</p>
+                <a href="{% url 'courses' %}" class="btn btn-primary">Начать обучение</a>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Слабые и сильные модули -->
+    {% if analytics.weak_modules or analytics.strong_modules %}
+    <div class="row g-4 mb-4">
+        {% if analytics.weak_modules %}
+        <div class="col-md-6">
+            <div class="glass-effect p-4">
+                <h5 class="mb-3">
+                    <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                    Требуют внимания
+                </h5>
+                {% for module in analytics.weak_modules %}
+                <div class="weak-module-item d-flex justify-content-between align-items-center mb-2">
+                    <span>{{ module.module }}</span>
+                    <span class="badge bg-danger">{{ module.score|floatformat:0 }}%</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if analytics.strong_modules %}
+        <div class="col-md-6">
+            <div class="glass-effect p-4">
+                <h5 class="mb-3">
+                    <i class="fas fa-star text-warning me-2"></i>
+                    Сильные стороны
+                </h5>
+                {% for module in analytics.strong_modules %}
+                <div class="strong-module-item d-flex justify-content-between align-items-center mb-2">
+                    <span>{{ module.module }}</span>
+                    <span class="badge bg-success">{{ module.score|floatformat:0 }}%</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <!-- Рекомендации -->
+    <div class="glass-effect p-4 mb-4">
+        <h4 class="mb-4">
+            <i class="fas fa-lightbulb me-2"></i>Персональные рекомендации
+        </h4>
+        
+        {% if recommendations %}
+            <div class="recommendations-list">
+                {% for rec in recommendations %}
+                <div class="recommendation-card mb-3 p-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="recommendation-header">
+                            <span class="recommendation-icon">
+                                {% if rec.recommendation_type == 'next' %}
+                                    <i class="fas fa-arrow-right text-success"></i>
+                                {% elif rec.recommendation_type == 'advanced' %}
+                                    <i class="fas fa-star text-warning"></i>
+                                {% elif rec.recommendation_type == 'repeat' %}
+                                    <i class="fas fa-sync-alt text-info"></i>
+                                {% else %}
+                                    <i class="fas fa-book text-primary"></i>
+                                {% endif %}
+                            </span>
+                            <strong>{{ rec.module_id.title }}</strong>
+                        </div>
+                        <small class="text-muted">{{ rec.created_at|date:"d.m.Y H:i" }}</small>
+                    </div>
+                    
+                    <div class="recommendation-text mt-2">
+                        {{ rec.recommendation_description|linebreaks|truncatewords:50 }}
+                    </div>
+                    
+                    <div class="recommendation-footer mt-2">
+                        <span class="badge 
+                            {% if rec.recommendation_type == 'next' %}bg-success
+                            {% elif rec.recommendation_type == 'advanced' %}bg-primary
+                            {% elif rec.recommendation_type == 'repeat' %}bg-warning text-dark
+                            {% else %}bg-info{% endif %}">
+                            {% if rec.recommendation_type == 'next' %}➡️ Следующий модуль
+                            {% elif rec.recommendation_type == 'advanced' %}🚀 Углублённое изучение
+                            {% elif rec.recommendation_type == 'repeat' %}🔄 Повторить материал
+                            {% else %}📚 Дополнительные материалы{% endif %}
+                        </span>
+                        
+                        {% if rec.module_id and rec.module_id.course_id %}
+                            <a href="{% url 'course_detail' id=rec.module_id.course_id.id %}">
+                                Перейти к курсу <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-4">
+                <i class="fas fa-lightbulb fa-3x mb-3 text-muted"></i>
+                <p class="text-muted">Пройдите тесты, чтобы получить персональные рекомендации</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <a href="{% url 'courses' %}" class="btn btn-outline-primary">
+            <i class="fas fa-arrow-left me-2"></i>Вернуться к курсам
+        </a>
+        <a href="{% url 'profile_edit' %}" class="btn btn-primary">
+            <i class="fas fa-user-edit me-2"></i>Редактировать профиль
+        </a>
+    </div>
+</div>
+
+
+{% endblock %}

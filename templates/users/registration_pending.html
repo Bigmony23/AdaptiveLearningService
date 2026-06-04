@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="glass-effect p-5 text-center">
+        <i class="fas fa-hourglass-end fa-4x mb-3 text-warning"></i>
+        <h2>Аккаунт на проверке</h2>
+        <p class="lead mt-3">
+            Спасибо за регистрацию! 
+            <br>Ваш аккаунт проверяется администратором.
+        </p>
+        <p class="text-muted">
+            Доступ будет предоставлен в течение 2 дней.
+            
+        </p>
+        <a href="{% url 'home' %}" class="btn btn-primary mt-4">
+            На главную
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ lesson.title }} - AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Навигация -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'courses' %}">Курсы</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'course_detail' id=course_id %}">
+                    {{ lesson.module_id.course_id.title }}
+                </a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'module_lessons' course_id=course_id module_id=module_id %}">
+                    {{ lesson.module_id.title }}
+                </a>
+            </li>
+            <li class="breadcrumb-item active">{{ lesson.title }}</li>
+        </ol>
+    </nav>
+
+    <!-- Содержание урока -->
+    <div class="glass-effect p-4 p-lg-5 mb-4">
+        <h1 class="mb-4">{{ lesson.title }}</h1>
+        
+        {% if lesson.video_url %}
+        <div class="video-container mb-4">
+            <iframe width="100%" height="400" src="{{ lesson.video_url }}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        {% endif %}
+        
+        <div class="lesson-content">
+            {{ lesson.content|linebreaks }}
+        </div>
+    </div>
+
+    <!-- Кнопки навигации -->
+    <div class="d-flex justify-content-between">
+        <a href="{% url 'module_lessons' course_id=course_id module_id=module_id %}" 
+           class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Ко всем урокам
+        </a>
+        
+        <!-- Логика отображения кнопки -->
+        {% if is_last_lesson %}
+            <!-- Если последний урок - показываем кнопку "Пройти тест" -->
+            <a href="{% url 'test' course_id=course_id module_id=module_id %}" 
+               class="btn btn-success btn-lg">
+                <i class="fas fa-clipboard-list me-2"></i>Пройти итоговый тест модуля
+                <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        {% else %}
+            <!-- Если не последний урок - показываем кнопку "Следующий урок" -->
+            {% if next_lesson %}
+                <a href="{% url 'lesson_detail' course_id=course_id module_id=module_id lesson_id=next_lesson.id %}" 
+                   class="btn btn-primary btn-lg">
+                    Следующий урок: {{ next_lesson.title }}
+                    <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            {% endif %}
+        {% endif %}
+    </div>
+    
+    <!-- Прогресс изучения модуля -->
+    <div class="progress-section mt-5">
+        <div class="d-flex justify-content-between mb-2">
+            <span>Прогресс модуля</span>
+            <span>{{ completed_count  }}/{{ total_lessons }} уроков</span>
+        </div>
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar" 
+                 role="progressbar" 
+                 style="width: {{ progress_percentage }}%;"
+                 aria-valuenow="{{ progress_percentage }}" 
+                 aria-valuemin="0" 
+                 aria-valuemax="100">
+            </div>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}

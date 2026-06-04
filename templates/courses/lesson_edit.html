@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block extra_head %}
+    {{ form.media }}
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h3>Редактирование урока</h3>  <!-- для test_edit.html: Редактирование теста -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary mt-3">Сохранить</button>
+        <a href="{% url 'module_manage' course_id=course_id module_id=module_id %}" 
+           class="btn btn-outline-secondary mt-3">
+            Отмена
+        </a>
+    </form>
+</div>
+{% endblock content %}

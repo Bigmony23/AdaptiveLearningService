@@ -1,0 +1,263 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block extra_head %}
+    {{ lesson_form.media }}
+    {{ required_material_form.media }}
+    {{ advanced_material_form.media }}
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h3>Управление модулем: {{ module.title }}</h3>
+        <div class="d-flex gap-2">
+            <a href="{% url 'module_edit' course_id=course_id module_id=module.id %}" 
+               class="btn btn-outline-primary btn-sm">Редактировать модуль</a>
+            <form method="POST" action="{% url 'module_delete' course_id=course_id module_id=module.id %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-danger btn-sm"
+                        onclick="return confirm('Удалить модуль?')">Удалить модуль</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Уроки -->
+    <h4>Уроки</h4>
+    {% if lessons %}
+        <ul class="list-group mb-3">
+            {% for lesson in lessons %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span>{{ lesson.order_index }}. {{ lesson.title }}
+                    <span class="badge bg-secondary">{{ lesson.content_type }}</span>
+                </span>
+                <div class="d-flex gap-2">
+                    <a href="{% url 'lesson_edit' course_id=course_id module_id=module.id lesson_id=lesson.id %}"
+                       class="btn btn-sm btn-outline-primary">Редактировать</a>
+                    <form method="POST" action="{% url 'lesson_delete' course_id=course_id module_id=module.id lesson_id=lesson.id %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-danger"
+                                onclick="return confirm('Удалить урок?')">Удалить</button>
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="text-muted">Уроков пока нет.</p>
+    {% endif %}
+
+    <!-- Форма добавления урока -->
+    <div class="card mb-4">
+        <div class="card-header">Добавить урок</div>
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add_lesson">
+                {{ lesson_form|crispy }}
+                <button type="submit" class="btn btn-primary mt-2">Добавить</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+
+    <!-- Тест -->
+    <h4>Тест</h4>
+    {% if test %}
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <div>
+                <p class="text-success mb-0">Тест: <strong>{{ test.title }}</strong></p>
+                <p class="text-muted">Проходной балл: {{ test.passing_score }} | Максимальный: {{ test.max_score }}</p>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="{% url 'test_edit' course_id=course_id module_id=module.id test_id=test.id %}"
+                   class="btn btn-sm btn-outline-primary">Редактировать тест</a>
+                <form method="POST" action="{% url 'test_delete' course_id=course_id module_id=module.id test_id=test.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-outline-danger"
+                            onclick="return confirm('Удалить тест и все вопросы?')">Удалить тест</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Вопросы -->
+        <h5>Вопросы:</h5>
+        {% if questions %}
+            {% for question in questions %}
+            <div class="card mb-2">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p><strong>{{ forloop.counter }}. {{ question.question_text }}</strong></p>
+                        <div class="d-flex gap-2">
+                            <a href="{% url 'question_edit' course_id=course_id module_id=module.id question_id=question.id %}"
+                               class="btn btn-sm btn-outline-primary">Редактировать</a>
+                            <form method="POST" action="{% url 'question_delete' course_id=course_id module_id=module.id question_id=question.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Удалить вопрос?')">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                    <p class="text-muted">Баллов: {{ question.points }}</p>
+
+                    <!-- Ответы -->
+                    <ul class="list-group mb-2">
+                        {% for answer in question.answer_set.all %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>{{ answer.answer_text }}
+                                {% if answer.is_correct %}
+                                    <span class="badge bg-success">Правильный</span>
+                                {% endif %}
+                            </span>
+                            <form method="POST" action="{% url 'answer_delete' course_id=course_id module_id=module.id answer_id=answer.id %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-outline-danger"
+                                        onclick="return confirm('Удалить ответ?')">✕</button>
+                            </form>
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    <!-- Форма добавления ответа -->
+                    <form method="POST" class="mt-2">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="add_answer">
+                        <input type="hidden" name="question_id" value="{{ question.id }}">
+                        {{ answer_form|crispy }}
+                        <button type="submit" class="btn btn-sm btn-outline-primary mt-1">Добавить ответ</button>
+                    </form>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">Вопросов пока нет.</p>
+        {% endif %}
+
+        <!-- Форма добавления вопроса -->
+        <div class="card mb-4">
+            <div class="card-header">Добавить вопрос</div>
+            <div class="card-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="add_question">
+                    {{ question_form|crispy }}
+                    <button type="submit" class="btn btn-primary mt-2">Добавить вопрос</button>
+                </form>
+            </div>
+        </div>
+
+    {% else %}
+        {% if test_error %}
+            <div class="alert alert-warning">{{ test_error }}</div>
+        {% endif %}
+
+        {% if lessons %}
+            <div class="card mb-4">
+                <div class="card-header">Создать тест</div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="add_test">
+                        {{ test_form|crispy }}
+                        <button type="submit" class="btn btn-success mt-2">Создать тест</button>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <p class="text-warning">Добавьте хотя бы один урок чтобы создать тест.</p>
+        {% endif %}
+    {% endif %}
+<!-- Дополнительные и углублённые материалы -->
+<div class="mt-5">
+    <h3 class="mb-3">Дополнительные и углублённые материалы</h3>
+
+    <!-- Обязательные материалы -->
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-dark">
+            <strong>📚 Обязательные материалы</strong> (для студентов, не сдавших тест за 3 попытки)
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add_required_material">
+                {{ required_material_form|crispy }}
+                <button type="submit" class="btn btn-warning mt-2">Добавить обязательный материал</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Углублённые материалы -->
+    <div class="card mb-4">
+        <div class="card-header bg-info text-dark">
+            <strong>🚀 Углублённые материалы</strong> (для студентов с баллом ≥85%)
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="add_advanced_material">
+                {{ advanced_material_form|crispy }}
+                <button type="submit" class="btn btn-info mt-2">Добавить углублённый материал</button>
+            </form>
+        </div>
+    </div>
+
+<!-- Список существующих материалов -->
+<div class="card">
+    <div class="card-header">Существующие материалы</div>
+    <div class="card-body">
+        {% if materials %}
+            <ul class="list-group">
+                {% for material in materials %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>{{ material.title }}</strong>
+                            <span class="badge bg-secondary ms-2">{{ material.get_material_type_display }}</span>
+                            {% if material.is_required %}
+                                <span class="badge bg-warning text-dark">Обязательный</span>
+                            {% endif %}
+                            {% if material.is_advanced %}
+                                <span class="badge bg-info">Углублённый</span>
+                            {% endif %}
+                        </div>
+                        <div class="d-flex gap-2">
+                            {% if material.url %}
+                                <a href="{{ material.url }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-external-link-alt"></i> Открыть
+                                </a>
+                            {% endif %}
+                            
+                            <!-- Кнопка редактирования (ведёт на отдельную страницу) -->
+                            <a href="{% url 'material_edit' course_id=course_id module_id=module.id material_id=material.id %}" 
+                               class="btn btn-sm btn-outline-warning">
+                                <i class="fas fa-edit"></i> Редактировать
+                            </a>
+                            
+                            <!-- Кнопка удаления -->
+                            <form method="POST" 
+                                  action="{% url 'material_delete' course_id=course_id module_id=module.id material_id=material.id %}" 
+                                  style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" 
+                                        class="btn btn-sm btn-outline-danger" 
+                                        onclick="return confirm('Удалить материал «{{ material.title }}»?')">
+                                    <i class="fas fa-trash"></i> Удалить
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="text-muted mb-0">Нет добавленных материалов.</p>
+        {% endif %}
+    </div>
+</div>
+
+<hr>
+<a href="{% url 'course_detail' id=course_id %}" class="btn btn-outline-secondary">
+    Назад к курсу
+</a>
+</div>
+</div>
+{% endblock content %}

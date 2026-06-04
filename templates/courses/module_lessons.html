@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ module.title }} - AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{% url 'home' %}">Главная</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'courses' %}">Курсы</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'course_detail' id=course_id %}">
+                    {{ module.course_id.title }}  <!-- исправлено -->
+                </a>
+            </li>
+            <li class="breadcrumb-item active">{{ module.title }}</li>
+        </ol>
+    </nav>
+
+    <!-- Заголовок модуля -->
+    <div class="module-header glass-effect mb-4 p-4 p-lg-5">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <span class="badge bg-primary mb-3">Модуль</span>
+                <h1 class="display-5 fw-bold mb-3">{{ module.title }}</h1>
+                <p class="lead mb-0">{{ module.description }}</p>
+            </div>
+            <div class="col-md-4 text-center text-md-end mt-4 mt-md-0">
+                <div class="stat-item">
+                    <i class="fas fa-book-open me-2"></i>
+                    <span>{{ lessons|length }} уроков</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Прогресс по урокам -->
+    <div class="glass-effect p-3 mb-4">
+        <div class="d-flex justify-content-between mb-2">
+            <span>Прогресс по урокам</span>
+            <span>{{ completed_count }}/{{ total_count }}</span>
+        </div>
+        <div class="progress" style="height: 10px;">
+            <div class="progress-bar bg-success"
+                 style="width: {{ progress_percentage }}%">
+            </div>
+        </div>
+    </div>
+
+    <!-- Список уроков -->
+    <h2 class="h3 mb-4">
+        <i class="fas fa-graduation-cap me-2"></i>Уроки модуля
+    </h2>
+
+    {% if lessons %}
+    <div class="lessons-list">
+        {% for lesson in lessons %}
+        <div class="lesson-card glass-effect mb-3 p-4">
+            <div class="row align-items-center">
+                <div class="col-auto">
+                    <div class="lesson-number">{{ lesson.order_index }}</div>
+                </div>
+                <div class="col">
+                    <h4 class="mb-1">{{ lesson.title }}</h4>
+                    <span class="badge bg-secondary">{{ lesson.content_type }}</span>
+                </div>
+                <div class="col-auto">
+                    {% if lesson.id in completed_lessons_ids %}
+                        <span class="badge bg-success me-2">
+                            <i class="fas fa-check"></i> Просмотрен
+                        </span>
+                        <a href="{% url 'lesson_detail' course_id module_id lesson.id %}"
+                           class="btn btn-outline-primary btn-sm">
+                            Повторить
+                        </a>
+                    {% elif forloop.first %}
+                        <a href="{% url 'lesson_detail' course_id module_id lesson.id %}"
+                           class="btn btn-primary">
+                            Изучить <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    {% else %}
+                        {% with prev_index=lesson.order_index|add:"-1" %}
+                        {% for l in lessons %}
+                            {% if l.order_index == prev_index %}
+                                {% if l.id in completed_lessons_ids %}
+                                    <a href="{% url 'lesson_detail' course_id module_id lesson.id %}"
+                                       class="btn btn-primary">
+                                        Изучить <i class="fas fa-arrow-right ms-2"></i>
+                                    </a>
+                                {% else %}
+                                    <span class="badge bg-secondary p-2">
+                                        <i class="fas fa-lock me-1"></i>Заблокировано
+                                    </span>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% endwith %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Кнопка теста -->
+    <div class="test-section mt-5">
+        <div class="test-card glass-effect p-4 p-lg-5 text-center">
+            <i class="fas fa-clipboard-list fa-3x mb-4"></i>
+            <h3 class="mb-3">Проверьте свои знания</h3>
+            <p class="text-muted mb-4">
+                После изучения всех уроков пройдите тест для перехода к следующему модулю.
+            </p>
+            {% if completed_count == total_count and total_count > 0 %}
+                <a href="{% url 'test' course_id module_id %}"
+                   class="btn btn-success btn-lg px-5">
+                    Пройти тест <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            {% else %}
+                <button class="btn btn-secondary btn-lg px-5" disabled>
+                    <i class="fas fa-lock me-2"></i>
+                    Пройдите все уроки ({{ completed_count }}/{{ total_count }})
+                </button>
+            {% endif %}
+        </div>
+    </div>
+
+    {% else %}
+    <div class="glass-effect p-5 text-center">
+        <i class="fas fa-folder-open fa-4x mb-3 text-muted"></i>
+        <h3>Уроки пока не добавлены</h3>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

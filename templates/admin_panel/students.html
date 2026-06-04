@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+
+<div class="glass-effect p-4">
+
+<h2 class="text-white mb-4">
+    <i class="fas fa-user-graduate me-2"></i>
+    Студенты
+</h2>
+
+<table class="table admin-table">
+    <thead>
+        <tr>
+            <th>Логин</th>
+            <th>ФИО</th>
+            <th>Email</th>
+            <th>Статус</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for student in students %}
+        <tr>
+            <td>{{ student.username }}</td>
+            <td>{{ student.full_name }}</td>
+            <td>{{ student.email }}</td>
+            <td>
+                {% if student.is_active %}
+                    <span class="badge bg-success">Активен</span>
+                {% else %}
+                    <span class="badge bg-danger">Заблокирован</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</div>
+
+</div>
+{% endblock %}

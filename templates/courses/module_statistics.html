@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Детальная статистика модуля — AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    
+    <!-- Заголовок -->
+    <div class="glass-effect p-4 mb-4">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div>
+                <h2 class="mb-1">
+                    <i class="fas fa-chart-simple me-2"></i>Детальная статистика
+                </h2>
+                <p class="text-muted mb-0">{{ course.title }} / {{ module.title }}</p>
+            </div>
+            <div class="d-flex gap-2 mt-2 mt-md-0">
+                <a href="{% url 'teacher_statistics' course.id %}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-2"></i>Назад
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Результаты студентов -->
+    <div class="glass-effect p-4 mb-4">
+        <h4 class="mb-3">
+            <i class="fas fa-users me-2"></i>Результаты студентов
+        </h4>
+        
+        {% if progress_records %}
+        <div class="table-responsive">
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr>
+                        <th>Студент</th>
+                        <th>Email</th>
+                        <th>Балл</th>
+                        <th>Попытки</th>
+                        <th>Статус</th>
+                        <th>Слабые темы</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in progress_records %}
+                    <tr>
+                        <td>{{ p.user_id.get_full_name|default:p.user_id.username }}</td>
+                        <td>{{ p.user_id.email }}</td>
+                        <td>
+                            <strong class="{% if p.score >= 85 %}text-success{% elif p.score >= 60 %}text-info{% else %}text-danger{% endif %}">
+                                {{ p.score|floatformat:0 }}%
+                            </strong>
+                        </td>
+                        <td>{{ p.attempts }}</td>
+                        <td>
+                            {% if p.score >= 85 %}
+                                <span class="badge bg-success">Отлично</span>
+                            {% elif p.score >= 60 %}
+                                <span class="badge bg-info">Пройден</span>
+                            {% else %}
+                                <span class="badge bg-danger">Не пройден</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if p.weak_topics %}
+                                {% for topic in p.weak_topics|slice:":2" %}
+                                    <span class="badge bg-warning text-dark">{{ topic }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-4">
+            <i class="fas fa-users fa-3x mb-3 text-muted"></i>
+            <p class="text-muted">Студенты ещё не проходили этот модуль</p>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Вопросы теста -->
+    {% if test and questions %}
+    <div class="glass-effect p-4">
+        <h4 class="mb-3">
+            <i class="fas fa-question-circle me-2"></i>Вопросы теста
+        </h4>
+        
+        {% for qs in questions_stats %}
+        <div class="question-stat mb-4 p-3" style="background: rgba(255,255,255,0.05); border-radius: 15px;">
+            <h5 class="mb-3">{{ forloop.counter }}. {{ qs.question.text }}</h5>
+            
+            <div class="answers-list ms-3">
+                {% for answer in qs.answers %}
+                <div class="form-check mb-2">
+                    <input class="form-check-input" type="radio" disabled 
+                           {% if answer.is_correct %}checked{% endif %}>
+                    <label class="form-check-label {% if answer.is_correct %}text-success{% endif %}">
+                        {{ answer.answer_text }}
+                        {% if answer.is_correct %}
+                            <i class="fas fa-check-circle text-success ms-2"></i>
+                        {% endif %}
+                    </label>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="mt-2">
+                <a href="{% url 'question_edit' course_id=course.id module_id=module.id question_id=qs.question.id %}"
+                   class="btn btn-sm btn-outline-warning">
+                    <i class="fas fa-edit me-1"></i>Редактировать вопрос
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+        
+        <div class="mt-3">
+            <a href="{% url 'module_manage' course.id module.id %}" class="btn btn-primary">
+                <i class="fas fa-cog me-2"></i>Управление модулем
+            </a>
+        </div>
+    </div>
+    {% elif test %}
+    <div class="glass-effect p-4 text-center">
+        <i class="fas fa-question-circle fa-3x mb-3 text-muted"></i>
+        <p class="text-muted">Вопросы ещё не добавлены</p>
+        <a href="{% url 'module_manage' course.id module.id %}" class="btn btn-primary">
+            Добавить вопросы
+        </a>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Результат теста - AdaptLearn{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Результат -->
+            <div class="glass-effect p-4 p-lg-5 text-center mb-4">
+                <h2 class="mb-4">Результат тестирования модуля</h2>
+                
+                <div class="score-circle mb-4">
+                    <div class="score-value">{{ progress.score|floatformat:0 }}%</div>
+                </div>
+                
+                <div class="attempts-info mb-4">
+                    <p>Попытка: {{ progress.attempts }}/3</p>
+                    {% if remaining_attempts > 0 and progress.score < 60 %}
+                        <div class="alert alert-info">
+                            У вас осталось {{ remaining_attempts }} попыток
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Рекомендация -->
+            {% if recommendation %}
+            <div class="recommendation-card glass-effect p-4 p-lg-5 mb-4">
+                <h3 class="mb-3">
+                    {% if recommendation.recommendation_type == 'repeat' %}
+                        <i class="fas fa-sync-alt text-warning me-2"></i>Рекомендация: Повторить материал
+                    {% elif recommendation.recommendation_type == 'additional' %}
+                        <i class="fas fa-book-open text-info me-2"></i>Рекомендация: Дополнительные материалы
+                    {% elif recommendation.recommendation_type == 'next' %}
+                        <i class="fas fa-arrow-right text-success me-2"></i>Рекомендация: Следующий модуль
+                    {% elif recommendation.recommendation_type == 'advanced' %}
+                        <i class="fas fa-star text-warning me-2"></i>Рекомендация: Углубленное изучение
+                    {% endif %}
+                </h3>
+                <div class="recommendation-body">
+                    {{ recommendation.recommendation_description|linebreaks }}
+                </div>
+            </div>
+            {% endif %}
+        <!-- Слабые темы -->
+                {% if progress.weak_topics %}
+                <div class="glass-effect p-4 mb-4">
+                    <h5><i class="fas fa-exclamation-triangle text-warning me-2"></i>Темы для повторения:</h5>
+                    <div class="mt-2">
+                        {% for topic in progress.weak_topics %}
+                            <span class="badge bg-warning text-dark me-2 p-2">{{ topic }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+                
+                <!-- Улучшение -->
+                {% if progress.improvement_rate > 0 %}
+                <div class="glass-effect p-3 mb-4 text-center">
+                    <i class="fas fa-arrow-up text-success me-2"></i>
+                    <strong>Улучшение по сравнению с прошлой попыткой: +{{ progress.improvement_rate|floatformat:1 }}%</strong>
+                </div>
+                {% endif %}
+
+            <!-- Кнопки действий -->
+            <div class="action-buttons text-center">
+                {% if progress.score < 60 and progress.attempts < 3 %}
+                    <a href="{% url 'module_lessons' course_id module_id %}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-book me-2"></i>Повторить материал
+                    </a>
+                    <a href="{% url 'test' course_id module_id %}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-redo me-2"></i>Пройти тест снова
+                    </a>
+                {% elif progress.score >= 85 %}
+                    <a href="{% url 'courses' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-trophy me-2"></i>К следующему модулю
+                    </a>
+                {% else %}
+                    <a href="{% url 'courses' %}" class="btn btn-primary btn-lg">
+                        <i class="fas fa-arrow-right me-2"></i>Продолжить обучение
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
