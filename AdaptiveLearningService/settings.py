@@ -184,7 +184,7 @@ CKEDITOR_CONFIGS = {
 
 # Если используете загрузку изображений
 CKEDITOR_UPLOAD_PATH = "uploads/"
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 print("CLOUDINARY_NAME:", os.environ.get('CLOUDINARY_CLOUD_NAME'))
 print("CLOUDINARY_KEY:", os.environ.get('CLOUDINARY_API_KEY'))
