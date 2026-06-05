@@ -36,7 +36,7 @@
         {% endif %}
         
         <div class="lesson-content">
-            {{ lesson.content|linebreaks }}
+            {{ lesson.content|safe }}
         </div>
     </div>
 

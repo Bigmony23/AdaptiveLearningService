@@ -1652,3 +1652,296 @@ body {
 .admin-card i {
     color: #a8c0ff;
 }
+/* ========================================
+   ГЛОБАЛЬНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ
+   ======================================== */
+
+/* Базовые настройки для мобильных */
+@media (max-width: 768px) {
+    /* Увеличение базового размера шрифта на мобильных */
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        font-size: 1rem;
+    }
+
+    /* Увеличение отступов в контейнере */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Улучшение карточек на мобильных */
+    .card, .glass-effect, .course-card, .feature-card {
+        border-radius: 15px !important;
+        margin-bottom: 1rem;
+    }
+
+    /* Увеличение внутренних отступов карточек */
+    .card-body, .course-card .card-body, .feature-card {
+        padding: 1.25rem !important;
+    }
+
+    /* Увеличение шрифтов в карточках */
+    .card-title, .course-card .card-title, h5 {
+        font-size: 1.1rem !important;
+        font-weight: 600;
+    }
+
+    .card-text, .course-card .card-text, p {
+        font-size: 0.95rem !important;
+        line-height: 1.5;
+    }
+
+    /* Увеличение кнопок для удобного касания */
+    .btn, button {
+        padding: 10px 16px !important;
+        font-size: 0.95rem !important;
+        min-height: 44px; /* Минимальный размер для касания */
+    }
+
+    .btn-lg {
+        padding: 12px 20px !important;
+        font-size: 1rem !important;
+    }
+
+    /* Улучшение заголовков */
+    h1, .h1, .display-4, .display-5 {
+        font-size: 1.8rem !important;
+    }
+
+    h2, .h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3, .h3 {
+        font-size: 1.3rem !important;
+    }
+
+    h4, .h4 {
+        font-size: 1.1rem !important;
+    }
+
+    /* Hero секция */
+    .hero-section {
+        padding: 40px 15px !important;
+        margin: 10px 0 30px !important;
+    }
+
+    .hero-section h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .hero-section .lead {
+        font-size: 1rem !important;
+    }
+
+    /* Сетка - увеличение промежутков */
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .col, [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .g-4, .gy-4 {
+        --bs-gutter-y: 1rem;
+        --bs-gutter-x: 1rem;
+    }
+
+    /* Формы */
+    .form-control, .form-select {
+        padding: 10px 12px !important;
+        font-size: 16px !important; /* Предотвращает масштабирование на iOS */
+        border-radius: 10px;
+    }
+
+    .form-label {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Модальные окна */
+    .modal-content {
+        margin: 1rem;
+        border-radius: 20px;
+    }
+
+    .modal-body {
+        padding: 1.25rem;
+    }
+
+    /* Таблицы - горизонтальная прокрутка */
+    .table-responsive {
+        margin-bottom: 1rem;
+        border-radius: 15px;
+    }
+
+    /* Навигация */
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        padding: 8px 0 !important;
+        font-size: 1rem;
+    }
+
+    /* Бейджи и метки */
+    .badge {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.65rem !important;
+    }
+
+    .difficulty-badge {
+        font-size: 0.7rem !important;
+        padding: 4px 10px !important;
+    }
+
+    /* Отступы */
+    .mt-5, .my-5 {
+        margin-top: 2rem !important;
+    }
+
+    .mb-4, .my-4 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .p-4, .p-lg-5 {
+        padding: 1.25rem !important;
+    }
+
+    /* Хлебные крошки */
+    .breadcrumb {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Для очень маленьких экранов (≤480px) */
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    h1, .h1, .display-4 {
+        font-size: 1.5rem !important;
+    }
+
+    h2, .h2 {
+        font-size: 1.3rem !important;
+    }
+
+    .card-body, .course-card .card-body {
+        padding: 1rem !important;
+    }
+
+    .btn {
+        padding: 8px 14px !important;
+        font-size: 0.9rem !important;
+    }
+
+    .hero-section h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* Убираем лишние колонки в сетке */
+    .row-cols-2 > * {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    /* Карточки в столбец */
+    .col-md-4, .col-md-6, .col-lg-4 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}
+
+/* Для планшетов (между 768px и 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        max-width: 95%;
+    }
+
+    /* 2 колонки вместо 3 на планшетах */
+    .row-cols-md-3 > * {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+/* Оптимизация для сенсорного управления */
+@media (hover: none) and (pointer: coarse) {
+    /* Убираем эффекты наведения на touch-устройствах */
+    .course-card:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+
+    /* Увеличиваем отступы для касания */
+    .nav-link, .dropdown-item {
+        padding: 10px 15px !important;
+    }
+
+    /* Убираем псевдоэффекты */
+    .course-image::after {
+        display: none;
+    }
+
+    .course-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Предотвращение масштабирования на iOS при фокусе на input */
+@media (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Улучшение читаемости на мобильных */
+@media (max-width: 768px) {
+    p, li, .card-text {
+        line-height: 1.6;
+    }
+
+    .text-muted {
+        font-size: 0.85rem;
+    }
+
+    /* Улучшение скролла для длинных таблиц */
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
+    }
+}

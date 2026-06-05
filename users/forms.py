@@ -109,6 +109,7 @@ class CustomAuthenticationForm(AuthenticationForm):
                     raise forms.ValidationError(
                         'Ваш аккаунт находится на проверке более 2 дней. '
                         'Пожалуйста, обратитесь в техническую поддержку.'
+                        'admin@mail.ru'
                     )
 
                 raise forms.ValidationError(
