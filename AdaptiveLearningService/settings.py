@@ -46,23 +46,20 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',        # ← СЮДА, до staticfiles
     'django.contrib.staticfiles',
-    #apps
+    'cloudinary',                # ← после
+    # остальные приложения...
     'users',
     'courses',
     'progress',
     'adaptive_engine',
     'notifications',
-    #modules
     'rest_framework',
     'crispy_forms',
     'crispy_bootstrap5',
     'ckeditor',
     'ckeditor_uploader',
-    'cloudinary',
-    'cloudinary_storage',
-
-
 ]
 
 MIDDLEWARE = [
