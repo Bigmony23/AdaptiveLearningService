@@ -8,6 +8,7 @@ class Course(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    co_authors = models.ManyToManyField(CustomUser, related_name='co_authored_courses', blank=True)
     difficulty_level = models.IntegerField()
     is_published = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)

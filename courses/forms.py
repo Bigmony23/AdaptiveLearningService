@@ -1,12 +1,19 @@
 from ckeditor.widgets import CKEditorWidget
 from django import forms
 from courses.models import Course, Module, Lesson, Test, Question, Answer, ModuleMaterial
+from users.models import CustomUser
 
 
 class CourseForm(forms.ModelForm):
+    co_authors = forms.ModelMultipleChoiceField(
+        queryset=CustomUser.objects.filter(is_staff=True),
+        required=False,
+        label='Со-преподаватели',
+        widget=forms.CheckboxSelectMultiple
+    )
     class Meta:
         model = Course
-        fields = ['title', 'description', 'difficulty_level', 'is_published', 'image']
+        fields = ['title', 'description', 'difficulty_level', 'is_published', 'image', 'co_authors']
         labels = {
             'title': 'Название курса',
             'description': 'Описание',

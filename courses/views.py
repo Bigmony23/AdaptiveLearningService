@@ -337,6 +337,7 @@ class CourseCreateView(TeacherRequiredMixin, View):
             course = form.save(commit=False)
             course.author = request.user
             course.save()
+            form.save_m2m()
             return redirect('courses')
         return render(request, 'courses/course_create.html', {'form': form})
 
@@ -452,7 +453,12 @@ class ModuleManageView(TeacherRequiredMixin, View):
 
 class TeacherCabinetView(TeacherRequiredMixin, View):
     def get(self, request):
-        courses = Course.objects.filter(author=request.user)
+        # Курсы где пользователь главный автор
+        owned_courses = Course.objects.filter(author=request.user)
+        # Курсы где пользователь со-преподаватель
+        co_courses = Course.objects.filter(co_authors=request.user)
+        # Объединяем
+        courses = (owned_courses | co_courses).distinct()
         context = {
             'courses': courses,
         }
@@ -469,7 +475,10 @@ class CourseDeleteView(TeacherRequiredMixin, View):
 class CourseEditView(TeacherRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(id=course_id)
-        form = CourseForm(instance=course)
+        form = CourseForm(request.POST, request.FILES, instance=course)
+        if form.is_valid():
+            form.save()  # save_m2m вызывается автоматически когда instance задан
+            return redirect('teacher_cabinet')
         return render(request, 'courses/course_edit.html', {'form': form, 'course': course})
 
     def post(self, request, course_id):
