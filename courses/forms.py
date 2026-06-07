@@ -6,7 +6,7 @@ from users.models import CustomUser
 
 class CourseForm(forms.ModelForm):
     co_authors = forms.ModelMultipleChoiceField(
-        queryset=CustomUser.objects.filter(is_staff=True),
+        queryset=CustomUser.objects.filter(role='teacher'),
         required=False,
         label='Со-преподаватели',
         widget=forms.CheckboxSelectMultiple
