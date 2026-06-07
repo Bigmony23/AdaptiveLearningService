@@ -1,0 +1,1947 @@
+/* Основные переменные */
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --bg-gradient-1: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    --bg-gradient-2: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    --bg-gradient-3: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-bg-dark: rgba(0, 0, 0, 0.3);
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+    --shadow-xl: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--bg-gradient-1);
+    background-attachment: fixed;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    color: #fff;
+    position: relative;
+}
+
+/* Анимированные частицы фона */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 120, 119, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(119, 198, 120, 0.2) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Навигационная панель - УЛУЧШЕННАЯ ВИДИМОСТЬ */
+.navbar {
+    background: rgba(15, 32, 39, 0.95) !important;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding: 1rem 0;
+    z-index: 9999 !important;  /* увеличить */
+    position: fixed !important;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, #fff, #a8c0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.9) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 0 5px;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gradient);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Эффект стекла для карточек */
+.glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Hero секция */
+.hero-section {
+    background: linear-gradient(135deg, rgba(102,126,234,0.3) 0%, rgba(118,75,162,0.3) 100%);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 80px 20px;
+    margin: 20px auto 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: moveBackground 20s linear infinite;
+}
+
+@keyframes moveBackground {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+.hero-section h1 {
+    background: linear-gradient(135deg, #fff, #d4c4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Карточки преимуществ */
+.feature-card {
+    text-align: center;
+    padding: 30px 20px;
+    transition: all 0.3s ease;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover .feature-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.feature-card h4, .feature-card p {
+    color: #fff;
+}
+
+.feature-card p {
+    color: rgba(255,255,255,0.8);
+}
+
+/* Улучшенные стили для карточек курсов */
+.course-card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.course-image {
+    height: 220px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    flex-shrink: 0;
+}
+
+/* Улучшенное масштабирование изображений */
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Эффект увеличения при наведении */
+.course-card:hover .course-image img {
+    transform: scale(1.1);
+}
+
+/* Затемнение при наведении */
+.course-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.course-card:hover .course-image::after {
+    opacity: 1;
+}
+
+/* Оверлей для кнопки */
+.course-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.course-card:hover .course-overlay {
+    opacity: 1;
+}
+
+/* Стили для кнопки в оверлее */
+.course-overlay .btn-light {
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-weight: 600;
+}
+
+.course-card:hover .course-overlay .btn-light {
+    transform: translateY(0);
+}
+
+/* Для изображения-заглушки */
+.course-image.bg-gradient {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.course-image.bg-gradient i {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover .course-image.bg-gradient i {
+    transform: scale(1.1);
+}
+
+/* Контент карточки */
+.course-card .card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.course-card .card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Футер карточки */
+.course-card .card-footer {
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem 1.5rem;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .course-image {
+        height: 180px;
+    }
+
+    .course-card .card-body {
+        padding: 1rem;
+    }
+
+    .course-card .card-footer {
+        padding: 0.75rem 1rem 1rem;
+    }
+}
+
+/* Для очень больших экранов */
+@media (min-width: 1400px) {
+    .course-image {
+        height: 260px;
+    }
+}
+/* Бейджи сложности */
+.difficulty-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.difficulty-начинающий {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+}
+
+.difficulty-средний {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    color: white;
+}
+
+.difficulty-продвинутый {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+/* Кнопки */
+.btn-primary {
+    background: var(--primary-gradient);
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+    left: 100%;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+    color: white;
+}
+
+.btn-outline-primary {
+    border: 2px solid #667eea;
+    color: #667eea;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.btn-outline-primary:hover {
+    background: var(--primary-gradient);
+    border-color: transparent;
+    transform: translateY(-2px);
+    color: white;
+}
+
+.btn-outline-light {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+/* Футер */
+.footer {
+    background: rgba(15, 32, 39, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 40px 20px;
+        margin: 10px 15px 30px;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .feature-card {
+        margin-bottom: 20px;
+    }
+
+    .glass-effect:hover {
+        transform: translateY(-3px);
+    }
+
+    .navbar {
+        padding: 0.5rem 0;
+    }
+}
+
+/* Анимации */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.feature-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Секция заголовка */
+.section-header {
+    margin-bottom: 50px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #fff, #d4c4ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-header p {
+    color: rgba(255,255,255,0.8);
+}
+
+/* Стили для форм */
+.form-glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-xl);
+}
+
+.form-control, .form-select {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(102,126,234,0.3);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102,126,234,0.25);
+}
+
+/* Контейнер */
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Улучшенная прокрутка */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+/* Дополнительные улучшения */
+.text-muted {
+    color: rgba(255,255,255,0.7) !important;
+}
+
+.badge {
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+/* Карточки в целом */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+}
+
+.card-footer {
+    background: transparent;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Alert компоненты */
+.alert {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+}
+main {
+    position: relative;
+    z-index: 1;
+}
+/* Липкий футер - в конец файла */
+/* Добавьте это в конец вашего main.css */
+
+/* === ФИКСИРОВАННОЕ ПОЗИЦИОНИРОВАНИЕ ФУТЕРА === */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: var(--bg-gradient-1);
+    background-attachment: fixed;
+}
+
+/* Отступ для фиксированной навигации */
+.navbar-spacer {
+    height: 76px;
+    flex-shrink: 0;
+}
+
+/* Основной контент - растягивается */
+.main-content {
+    flex: 1 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Футер - прижат к низу */
+.footer {
+    flex-shrink: 0;
+    background: rgba(15, 32, 39, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    width: 100%;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+/* Отступы для контейнеров внутри main-content */
+.main-content .container {
+    padding-bottom: 2rem;
+}
+
+/* Дополнительные отступы для секций */
+.section-header {
+    margin-bottom: 2rem;
+}
+
+/* Убираем лишние margin у последних элементов */
+.main-content > :last-child {
+    margin-bottom: 0;
+}
+
+/* Для страниц с маленьким контентом */
+.min-vh-custom {
+    min-height: calc(100vh - 200px);
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .navbar-spacer {
+        height: 60px;
+    }
+
+    .footer {
+        padding: 1.5rem 0;
+        margin-top: 2rem;
+    }
+
+    .main-content .container {
+        padding-bottom: 1rem;
+    }
+}
+
+/* Дополнительные стили для страницы курсов */
+.coverimg-pic {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.author-info {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 10px;
+}
+
+.module-item {
+    transition: transform 0.3s ease;
+}
+
+.module-item:hover {
+    transform: translateX(10px);
+}
+
+.module-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .module-item .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .module-number {
+        margin: 0 auto 15px;
+    }
+
+    .module-item .col-auto:last-child {
+        margin-top: 15px;
+    }
+}
+/*модул
+
+ */
+/* Хлебные крошки */
+.breadcrumb {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #fff;
+}
+
+.breadcrumb-item.active {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Заголовок модуля */
+.module-header {
+    background: linear-gradient(135deg, rgba(102,126,234,0.2) 0%, rgba(118,75,162,0.2) 100%);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.module-stats {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    padding: 1rem;
+    display: inline-block;
+}
+
+.stat-item {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Карточки уроков */
+.lesson-card {
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.lesson-card:hover {
+    transform: translateX(10px);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255,255,255,0.3);
+}
+
+.lesson-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-gradient);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.lesson-card:hover .lesson-number {
+    transform: scale(1.1);
+}
+
+.lesson-link {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.lesson-link:hover {
+    color: #a8c0ff;
+}
+
+/* Карточка теста */
+.test-card {
+    background: linear-gradient(135deg, rgba(102,126,234,0.3) 0%, rgba(118,75,162,0.3) 100%);
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+.test-icon {
+    color: #667eea;
+}
+
+/* Состояние пустого списка */
+.empty-state {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Прогресс-бар (опционально) */
+.progress-section {
+    margin-top: 2rem;
+}
+
+.progress {
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
+    height: 10px;
+}
+
+.progress-bar {
+    background: var(--primary-gradient);
+    border-radius: 10px;
+}
+
+/* Анимации */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.lesson-card {
+    animation: slideIn 0.3s ease forwards;
+}
+
+/* Задержки для карточек уроков */
+
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .module-header {
+        text-align: center;
+    }
+
+    .lesson-card .row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .lesson-number {
+        margin: 0 auto 15px;
+    }
+
+    .lesson-card .col-auto:last-child {
+        margin-top: 15px;
+    }
+
+    .lesson-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .test-card {
+        margin: 0 15px;
+    }
+
+    .module-stats {
+        display: inline-flex;
+        gap: 1rem;
+    }
+
+    .stat-item {
+        margin-top: 0;
+    }
+}
+
+/* Дополнительные улучшения */
+.lessons-list {
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102,126,234,0.3);
+}
+
+.glass-effect {
+    transition: all 0.3s ease;
+}
+.module-number {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-gradient);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: white;
+}
+
+.module-card {
+    transition: all 0.3s ease;
+}
+
+.module-card:hover {
+    transform: translateX(10px);
+}
+/*lesson*/
+.lesson-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #fff;
+}
+
+.lesson-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 1rem 0;
+}
+
+.lesson-content pre {
+    background: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: 10px;
+    overflow-x: auto;
+    color: #e0e0e0;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.progress-bar {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40,167,69,0.4);
+}
+/*lesson*/
+.score-circle {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.score-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.recommendation-body {
+    line-height: 1.8;
+    white-space: pre-line;
+}
+/* Стили для страницы тестов */
+.test-container .question-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.test-container .question-card h5 {
+    color: #ffffff !important;
+    margin-bottom: 1rem;
+}
+
+.test-container .question-card .form-check-label {
+    color: #e0e0e0 !important;
+    cursor: pointer;
+}
+
+.test-container .question-card .form-check-label:hover {
+    color: #ffffff !important;
+}
+
+.test-container .form-check-input {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.test-container .form-check-input:checked {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+.test-info .badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+}
+
+/* Карточка курса в списке */
+.course-list-card {
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.course-list-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Изображение курса */
+.course-list-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.course-list-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.course-list-card:hover .course-list-image img {
+    transform: scale(1.1);
+}
+
+.course-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.course-list-card:hover .course-overlay {
+    opacity: 1;
+}
+
+.no-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Контент карточки */
+.course-list-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.course-list-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.course-list-title a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.course-list-title a:hover {
+    color: #a8c0ff;
+}
+
+.course-list-description {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+/* Мета информация */
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.meta-item {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.meta-item i {
+    margin-right: 0.25rem;
+}
+
+/* Футер карточки */
+.course-list-footer {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+}
+
+/* Пустое состояние */
+.empty-state {
+    padding: 4rem 2rem;
+}
+
+.empty-state i {
+    opacity: 0.5;
+}
+
+/* Кнопка кабинета */
+.cabinet-button .btn {
+    padding: 0.75rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #f093fb, #f5576c);
+    border: none;
+    color: white;
+}
+
+.btn-warning:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(240, 147, 251, 0.4);
+    color: white;
+}
+
+.btn-outline-primary:hover {
+    transform: translateY(-2px);
+    background: var(--primary-gradient);
+    border-color: transparent;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .course-list-image {
+        height: 180px;
+    }
+
+    .course-list-content {
+        padding: 1rem;
+    }
+
+    .course-list-footer {
+        padding: 0 1rem 1rem 1rem;
+    }
+
+    .cabinet-button .btn {
+        width: 100%;
+    }
+}
+
+/* Анимация появления */
+/*.course-list-card {
+    animation: fadeInUp 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+*/
+/* Аватар */
+.profile-avatar .default-avatar {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Статистика */
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+.stat-icon {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+.stat-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+}
+
+/* Аналитика */
+.analytics-icon {
+    font-size: 1.5rem;
+    color: #667eea;
+}
+
+/* Прогресс */
+.module-progress {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 1rem;
+}
+
+.module-progress:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.score-badge {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+.progress-details {
+    font-size: 0.8rem;
+}
+
+.progress-badges .badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+}
+
+/* Топики */
+.weak-topics {
+    font-size: 0.8rem;
+}
+
+.topic-badge {
+    display: inline-block;
+    background: rgba(255, 193, 7, 0.2);
+    color: #ffc107;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    margin-right: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+/* Рекомендации */
+.recommendation-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.recommendation-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.recommendation-icon {
+    display: inline-block;
+    width: 30px;
+}
+
+.recommendation-text {
+    color: rgba(255,255,255,0.8);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.recommendation-footer {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Пустое состояние */
+.empty-progress {
+    background: rgba(255,255,255,0.03);
+    border-radius: 15px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .progress-details {
+        margin-bottom: 0.5rem;
+    }
+
+    .progress-badges {
+        margin-top: 0.5rem;
+    }
+
+    .recommendation-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stat-card {
+        margin-bottom: 0.5rem;
+    }
+}
+
+.form-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 1.25rem;
+}
+
+.form-control {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.form-control:focus {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    color: #fff;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-label {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.form-check-input {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.form-check-input:checked {
+    background-color: #667eea;
+    border-color: #667eea;
+}
+
+.form-check-label {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.default-avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.current-avatar {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .glass-effect {
+        padding: 1.5rem;
+    }
+}
+
+.auth-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.glass-effect {
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Мобильная адаптивность для страницы теста */
+@media (max-width: 768px) {
+    .test-container .glass-effect {
+        padding: 1rem !important;
+    }
+
+    .test-container .question-card {
+        padding: 1rem !important;
+        margin-bottom: 1rem;
+    }
+
+    .test-container .question-card h5 {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .test-container .form-check-label {
+        font-size: 0.9rem;
+        word-break: break-word;
+    }
+
+    .test-container .form-check-input {
+        width: 1.1rem;
+        height: 1.1rem;
+        margin-top: 0.2rem;
+    }
+
+    .test-container .form-check {
+        padding-left: 2rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .test-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .test-info .badge {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
+    }
+
+    .test-container h1.display-5 {
+        font-size: 1.75rem;
+    }
+
+    .test-container .lead {
+        font-size: 1rem;
+    }
+
+    .btn-lg {
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* Для очень маленьких экранов (до 480px) */
+@media (max-width: 480px) {
+    .test-container .glass-effect {
+        padding: 0.75rem !important;
+    }
+
+    .test-container .question-card {
+        padding: 0.75rem !important;
+    }
+
+    .test-container .question-card h5 {
+        font-size: 0.9rem;
+    }
+
+    .test-container .form-check-label {
+        font-size: 0.85rem;
+    }
+
+    .test-info .badge {
+        font-size: 0.7rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .test-container h1.display-5 {
+        font-size: 1.5rem;
+    }
+}
+
+/* =========================
+   ADMIN PANEL
+========================= */
+
+.admin-card {
+    display: block;
+    text-align: center;
+    padding: 30px;
+    height: 100%;
+    color: white;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    transition: all .3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    color: white;
+    background: rgba(255,255,255,0.15);
+}
+
+.admin-card i {
+    color: #a8c0ff;
+}
+
+.admin-table {
+    color: white !important;
+}
+
+.admin-table thead th {
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.admin-table td {
+    color: rgba(255,255,255,0.9);
+    border-color: rgba(255,255,255,0.1);
+}
+
+.admin-table tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+
+.admin-table tbody tr {
+    transition: all .3s ease;
+}
+
+.table-responsive {
+    border-radius: 15px;
+}
+
+.glass-effect h2,
+.glass-effect h3,
+.glass-effect h4,
+.glass-effect h5,
+.glass-effect p {
+    color: white;
+}
+.admin-table {
+    color: white !important;
+}
+
+.admin-table th {
+    color: white !important;
+    border-color: rgba(255,255,255,.15);
+}
+
+.admin-table td {
+    color: rgba(255,255,255,.9) !important;
+    border-color: rgba(255,255,255,.1);
+}
+
+.admin-table tr:hover {
+    background: rgba(255,255,255,.05);
+}
+
+.admin-card {
+    display: block;
+    padding: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 20px;
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,.15);
+    transition: .3s;
+}
+
+.admin-card:hover {
+    color: white;
+    transform: translateY(-5px);
+    background: rgba(255,255,255,.12);
+}
+
+.admin-card i {
+    color: #a8c0ff;
+}
+/* ========================================
+   ГЛОБАЛЬНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ
+   ======================================== */
+
+/* Базовые настройки для мобильных */
+@media (max-width: 768px) {
+    /* Увеличение базового размера шрифта на мобильных */
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        font-size: 1rem;
+    }
+
+    /* Увеличение отступов в контейнере */
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* Улучшение карточек на мобильных */
+    .card, .glass-effect, .course-card, .feature-card {
+        border-radius: 15px !important;
+        margin-bottom: 1rem;
+    }
+
+    /* Увеличение внутренних отступов карточек */
+    .card-body, .course-card .card-body, .feature-card {
+        padding: 1.25rem !important;
+    }
+
+    /* Увеличение шрифтов в карточках */
+    .card-title, .course-card .card-title, h5 {
+        font-size: 1.1rem !important;
+        font-weight: 600;
+    }
+
+    .card-text, .course-card .card-text, p {
+        font-size: 0.95rem !important;
+        line-height: 1.5;
+    }
+
+    /* Увеличение кнопок для удобного касания */
+    .btn, button {
+        padding: 10px 16px !important;
+        font-size: 0.95rem !important;
+        min-height: 44px; /* Минимальный размер для касания */
+    }
+
+    .btn-lg {
+        padding: 12px 20px !important;
+        font-size: 1rem !important;
+    }
+
+    /* Улучшение заголовков */
+    h1, .h1, .display-4, .display-5 {
+        font-size: 1.8rem !important;
+    }
+
+    h2, .h2 {
+        font-size: 1.5rem !important;
+    }
+
+    h3, .h3 {
+        font-size: 1.3rem !important;
+    }
+
+    h4, .h4 {
+        font-size: 1.1rem !important;
+    }
+
+    /* Hero секция */
+    .hero-section {
+        padding: 40px 15px !important;
+        margin: 10px 0 30px !important;
+    }
+
+    .hero-section h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .hero-section .lead {
+        font-size: 1rem !important;
+    }
+
+    /* Сетка - увеличение промежутков */
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+
+    .col, [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .g-4, .gy-4 {
+        --bs-gutter-y: 1rem;
+        --bs-gutter-x: 1rem;
+    }
+
+    /* Формы */
+    .form-control, .form-select {
+        padding: 10px 12px !important;
+        font-size: 16px !important; /* Предотвращает масштабирование на iOS */
+        border-radius: 10px;
+    }
+
+    .form-label {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Модальные окна */
+    .modal-content {
+        margin: 1rem;
+        border-radius: 20px;
+    }
+
+    .modal-body {
+        padding: 1.25rem;
+    }
+
+    /* Таблицы - горизонтальная прокрутка */
+    .table-responsive {
+        margin-bottom: 1rem;
+        border-radius: 15px;
+    }
+
+    /* Навигация */
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .nav-link {
+        padding: 8px 0 !important;
+        font-size: 1rem;
+    }
+
+    /* Бейджи и метки */
+    .badge {
+        font-size: 0.75rem !important;
+        padding: 0.35rem 0.65rem !important;
+    }
+
+    .difficulty-badge {
+        font-size: 0.7rem !important;
+        padding: 4px 10px !important;
+    }
+
+    /* Отступы */
+    .mt-5, .my-5 {
+        margin-top: 2rem !important;
+    }
+
+    .mb-4, .my-4 {
+        margin-bottom: 1.5rem !important;
+    }
+
+    .p-4, .p-lg-5 {
+        padding: 1.25rem !important;
+    }
+
+    /* Хлебные крошки */
+    .breadcrumb {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+}
+
+/* Для очень маленьких экранов (≤480px) */
+@media (max-width: 480px) {
+    html {
+        font-size: 13px;
+    }
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    h1, .h1, .display-4 {
+        font-size: 1.5rem !important;
+    }
+
+    h2, .h2 {
+        font-size: 1.3rem !important;
+    }
+
+    .card-body, .course-card .card-body {
+        padding: 1rem !important;
+    }
+
+    .btn {
+        padding: 8px 14px !important;
+        font-size: 0.9rem !important;
+    }
+
+    .hero-section h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    /* Убираем лишние колонки в сетке */
+    .row-cols-2 > * {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    /* Карточки в столбец */
+    .col-md-4, .col-md-6, .col-lg-4 {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}
+
+/* Для планшетов (между 768px и 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    html {
+        font-size: 15px;
+    }
+
+    .container {
+        max-width: 95%;
+    }
+
+    /* 2 колонки вместо 3 на планшетах */
+    .row-cols-md-3 > * {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+/* Оптимизация для сенсорного управления */
+@media (hover: none) and (pointer: coarse) {
+    /* Убираем эффекты наведения на touch-устройствах */
+    .course-card:hover {
+        transform: none;
+    }
+
+    .btn:hover {
+        transform: none;
+    }
+
+    /* Увеличиваем отступы для касания */
+    .nav-link, .dropdown-item {
+        padding: 10px 15px !important;
+    }
+
+    /* Убираем псевдоэффекты */
+    .course-image::after {
+        display: none;
+    }
+
+    .course-overlay {
+        opacity: 1;
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Предотвращение масштабирования на iOS при фокусе на input */
+@media (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Улучшение читаемости на мобильных */
+@media (max-width: 768px) {
+    p, li, .card-text {
+        line-height: 1.6;
+    }
+
+    .text-muted {
+        font-size: 0.85rem;
+    }
+
+    /* Улучшение скролла для длинных таблиц */
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
+    }
+}
