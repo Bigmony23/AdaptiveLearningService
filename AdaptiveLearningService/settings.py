@@ -164,7 +164,18 @@ CLOUDINARY_STORAGE = {
     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
 
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# Удали эту строку
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+# И замени на это
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
@@ -184,7 +195,7 @@ CKEDITOR_CONFIGS = {
 
 # Если используете загрузку изображений
 CKEDITOR_UPLOAD_PATH = "uploads/"
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 
 print("CLOUDINARY_NAME:", os.environ.get('CLOUDINARY_CLOUD_NAME'))
 print("CLOUDINARY_KEY:", os.environ.get('CLOUDINARY_API_KEY'))
