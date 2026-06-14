@@ -281,10 +281,11 @@ class TestView(View):
         progress.save()
 
         # ТЕПЕРЬ ПЕРЕМЕННАЯ module ДОСТУПНА
-        if progress.attempts >= 6 and score < 60:
+        # Уведомление при 3, 6, 9 неудачных попытках
+        if score < 60 and progress.attempts in [3, 6, 9]:
             send_teacher_alert_about_failing_student(
                 request.user,
-                module,  # <-- ТЕПЕРЬ РАБОТАЕТ
+                module,
                 progress.attempts
             )
 

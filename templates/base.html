@@ -46,7 +46,7 @@
                             </a>
                         </li>
                     {% endif %}
-                     {% if user.is_authenticated and user.role == 'admin' %}
+                     {% if request.user.is_authenticated and user.role == 'admin' %}
                 <li class="nav-item">
                     <a class="nav-link"
                        href="{% url 'admin_pending_users' %}">
