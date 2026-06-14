@@ -48,21 +48,21 @@ def send_teacher_alert_about_failing_student(student, module, attempts_count):
     if attempts_count == 3:
         title = 'Студент не сдаёт тест (3 попытки)'
         message = (
-            f'Студент {student.get_full_name() or student.username} ({student.email}) '
+            f'Студент {student.full_name() or student.username} ({student.email}) '
             f'не смог сдать тест модуля "{module.title}" после 3 попыток. '
             f'Рекомендуется обратить внимание.'
         )
     elif attempts_count == 6:
         title = 'Студент испытывает серьёзные трудности (6 попыток)'
         message = (
-            f'Студент {student.get_full_name() or student.username} ({student.email}) '
+            f'Студент {student.full_name() or student.username} ({student.email}) '
             f'не смог сдать тест модуля "{module.title}" после 6 попыток. '
             f'Необходима помощь преподавателя!'
         )
     elif attempts_count == 9:
         title = 'Критическая ситуация! Студент не сдаёт тест (9 попыток)'
         message = (
-            f'Студент {student.get_full_name() or student.username} ({student.email}) '
+            f'Студент {student.full_name() or student.username} ({student.email}) '
             f'не смог сдать тест модуля "{module.title}" после 9 попыток. '
             f'Срочно свяжитесь со студентом!'
         )
@@ -87,7 +87,7 @@ def send_admin_notification_about_registration(user):
     for staff in staff_users:
         Notification.objects.create(
             user=staff,
-            title=f'Новая регистрация: {user.get_full_name() or user.username}',
+            title=f'Новая регистрация: {user.full_name() or user.username}',
             message=f'Студент {user.email} зарегистрировался и требует активации.',
             notification_type='registration'
         )
