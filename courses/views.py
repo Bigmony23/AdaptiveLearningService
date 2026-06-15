@@ -472,10 +472,7 @@ class CourseDeleteView(TeacherRequiredMixin, View):
 class CourseEditView(TeacherRequiredMixin, View):
     def get(self, request, course_id):
         course = Course.objects.get(id=course_id)
-        form = CourseForm(request.POST, request.FILES, instance=course)
-        if form.is_valid():
-            form.save()  # save_m2m вызывается автоматически когда instance задан
-            return redirect('teacher_cabinet')
+        form = CourseForm(instance=course)  # только instance, без POST
         return render(request, 'courses/course_edit.html', {'form': form, 'course': course})
 
     def post(self, request, course_id):
@@ -484,7 +481,7 @@ class CourseEditView(TeacherRequiredMixin, View):
         if form.is_valid():
             form.save()
             return redirect('teacher_cabinet')
-        return render(request, 'courses/course_edit.html', {'form': form})
+        return render(request, 'courses/course_edit.html', {'form': form, 'course': course})
 
 # Удаление модуля
 class ModuleDeleteView(TeacherRequiredMixin, View):

@@ -11,6 +11,13 @@ class CourseForm(forms.ModelForm):
         label='Со-преподаватели',
         widget=forms.CheckboxSelectMultiple
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Показываем ФИО вместо username в списке со-преподавателей
+        self.fields['co_authors'].queryset = CustomUser.objects.filter(role='teacher')
+        self.fields['co_authors'].label_from_instance = lambda obj: obj.full_name() or obj.username
+
     class Meta:
         model = Course
         fields = ['title', 'description', 'difficulty_level', 'is_published', 'image', 'co_authors']
@@ -21,7 +28,6 @@ class CourseForm(forms.ModelForm):
             'is_published': 'Опубликован',
             'image': 'Изображение',
         }
-
 class ModuleForm(forms.ModelForm):
     class Meta:
         model = Module
