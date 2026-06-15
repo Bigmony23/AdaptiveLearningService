@@ -195,7 +195,7 @@ class TestView(View):
                             module_id=module_id,
                             lesson_id=first_uncompleted.id)
 
-        # 2. Проверка на обязательные материалы после трёх неудачных попыток
+        # 2. Обязательные материалы — если attempts >= 3 and score < 60
         progress = User_progerss.objects.filter(user_id=request.user, module_id=module).first()
         if progress and progress.attempts >= 3 and progress.score < 60:
             required_materials = ModuleMaterial.objects.filter(module=module, is_required=True)
@@ -206,7 +206,6 @@ class TestView(View):
                     viewed=True
                 ).count()
                 if viewed_count < required_materials.count():
-                    # Не все обязательные материалы просмотрены → на страницу материалов
                     return redirect('module_materials', course_id=course_id, module_id=module_id)
 
         # 3. Показать тест
@@ -226,8 +225,7 @@ class TestView(View):
         correct = 0
         total = questions.count()
 
-        # ПОЛУЧАЕМ МОДУЛЬ ОДИН РАЗ И СОХРАНЯЕМ В ПЕРЕМЕННУЮ
-        module = Module.objects.get(id=module_id)  # <-- ДОБАВИТЬ ЭТУ СТРОКУ
+        module = Module.objects.get(id=module_id)
 
         for question in questions:
             selected_answer_id = request.POST.get(f'question_{question.id}')
@@ -235,11 +233,10 @@ class TestView(View):
                 answer = Answer.objects.get(id=selected_answer_id)
                 if answer.is_correct:
                     correct += 1
-                # Сохраняем каждый ответ в TestResult
                 TestResult.objects.create(
                     user_id=request.user,
                     question=question,
-                    module_id=module,  # <-- ИСПОЛЬЗУЕМ ПЕРЕМЕННУЮ module
+                    module_id=module,
                     selected_answer=answer,
                     is_correct=answer.is_correct
                 )
@@ -248,15 +245,16 @@ class TestView(View):
 
         progress, created = User_progerss.objects.get_or_create(
             user_id=request.user,
-            module_id=module  # <-- ИСПОЛЬЗУЕМ ПЕРЕМЕННУЮ module
+            module_id=module
         )
         progress.attempts += 1
         progress.score = score
+        if score > progress.best_score:  # <-- ДОБАВИТЬ
+            progress.best_score = score  # <-- ДОБАВИТЬ
 
-        # Слабые темы
         wrong_answers = TestResult.objects.filter(
             user_id=request.user,
-            module_id=module,  # <-- ИСПОЛЬЗУЕМ ПЕРЕМЕННУЮ module
+            module_id=module,
             is_correct=False
         )
         weak = list(set([
@@ -264,10 +262,9 @@ class TestView(View):
             if a.question.topic
         ]))
 
-        # Темп улучшения
         previous_progress = User_progerss.objects.filter(
             user_id=request.user,
-            module_id=module  # <-- ИСПОЛЬЗУЕМ ПЕРЕМЕННУЮ module
+            module_id=module
         ).last()
         improvement = score - previous_progress.score if previous_progress else 0
 
@@ -280,8 +277,6 @@ class TestView(View):
 
         progress.save()
 
-        # ТЕПЕРЬ ПЕРЕМЕННАЯ module ДОСТУПНА
-        # Уведомление при 3, 6, 9 неудачных попытках
         if score < 60 and progress.attempts in [3, 6, 9]:
             send_teacher_alert_about_failing_student(
                 request.user,
@@ -522,6 +517,9 @@ class QuestionDeleteView(TeacherRequiredMixin, View):
     def post(self, request, course_id, module_id, question_id):
         question = Question.objects.get(id=question_id)
         question.delete()
+        User_progerss.objects.filter(
+            module_id=module_id
+        ).update(best_score=0)
         return redirect('module_manage', course_id=course_id, module_id=module_id)
 
 # Редактирование вопроса
@@ -529,6 +527,7 @@ class QuestionEditView(TeacherRequiredMixin, View):
     def get(self, request, course_id, module_id, question_id):
         question = Question.objects.get(id=question_id)
         form = QuestionForm(instance=question)
+
         return render(request, 'courses/question_edit.html', {
             'form': form,
             'course_id': course_id,
@@ -541,6 +540,9 @@ class QuestionEditView(TeacherRequiredMixin, View):
         form = QuestionForm(request.POST, instance=question)
         if form.is_valid():
             form.save()
+            User_progerss.objects.filter(
+                module_id=module_id
+            ).update(best_score=0)
             return redirect('module_manage', course_id=course_id, module_id=module_id)
         return render(request, 'courses/question_edit.html', {'form': form})
 
@@ -549,6 +551,9 @@ class AnswerDeleteView(TeacherRequiredMixin, View):
     def post(self, request, course_id, module_id, answer_id):
         answer = Answer.objects.get(id=answer_id)
         answer.delete()
+        User_progerss.objects.filter(
+            module_id=module_id
+        ).update(best_score=0)
         return redirect('module_manage', course_id=course_id, module_id=module_id)
 
 
@@ -765,7 +770,7 @@ class ModuleMaterialsView(LoginRequiredMixin, View):
         progress = User_progerss.objects.filter(user_id=request.user, module_id=module).first()
 
         # Определяем, какие материалы показывать
-        if progress and progress.score >= 85:
+        if progress and progress.best_score >= 85:
             materials = ModuleMaterial.objects.filter(module=module, is_advanced=True)
             page_title = "Углублённые материалы"
         else:

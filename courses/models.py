@@ -62,6 +62,7 @@ class User_progerss(models.Model):
     completed_at = models.DateTimeField(null=True, blank=True)
     weak_topics = models.JSONField(default=list)
     improvement_rate = models.FloatField(default=0)
+    best_score = models.FloatField(default=0)
 
     class Meta:
         unique_together = ['user_id', 'module_id', 'lesson']  # Исправлено
