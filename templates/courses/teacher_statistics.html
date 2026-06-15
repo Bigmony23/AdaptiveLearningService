@@ -144,7 +144,8 @@
                     <tr>
                         <th>Студент</th>
                         <th>Email</th>
-                        <th>Балл</th>
+                        <th>Последний балл</th>
+                        <th>Лучший балл</th>
                         <th>Попытки</th>
                         <th>Статус</th>
                         <th>Завершён</th>
@@ -164,11 +165,16 @@
                                 {{ p.score|floatformat:0 }}%
                             </strong>
                         </td>
+                        <td>
+                            <strong class="{% if p.best_score >= 85 %}text-success{% elif p.best_score >= 60 %}text-info{% else %}text-danger{% endif %}">
+                                {{ p.best_score|floatformat:0 }}%
+                            </strong>
+                        </td>
                         <td>{{ p.attempts }}</td>
                         <td>
-                            {% if p.score >= 85 %}
+                            {% if p.best_score >= 85 %}
                                 <span class="badge bg-success">Отлично 🌟</span>
-                            {% elif p.score >= 60 %}
+                            {% elif p.best_score >= 60 %}
                                 <span class="badge bg-info">Пройден ✅</span>
                             {% else %}
                                 <span class="badge bg-danger">Не пройден ❌</span>
@@ -181,20 +187,15 @@
                                 <span class="text-muted">—</span>
                             {% endif %}
                         </td>
-                      <!-- В teacher_statistics.html, в колонке "Слабые темы" -->
-                            <td>
-                                {% if p.weak_topics %}
-                                    {% for topic in p.weak_topics %}
-                                        <span class="badge bg-warning text-dark">
-                                            {% with words=topic.split %}
-                                                {{ words|slice:":2"|join:" " }}{% if topic|length > words|slice:":2"|join:" "|length %}...{% endif %}
-                                            {% endwith %}
-                                        </span>
-                                    {% endfor %}
-                                {% else %}
-                                    <span class="text-muted">—</span>
-                                {% endif %}
-                            </td>
+                        <td>
+                            {% if p.weak_topics %}
+                                {% for topic in p.weak_topics %}
+                                    <span class="badge bg-warning text-dark">{{ topic }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <span class="text-muted">—</span>
+                            {% endif %}
+                        </td>
                     </tr>
                     {% endfor %}
                 </tbody>
