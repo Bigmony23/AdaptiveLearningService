@@ -74,6 +74,9 @@
                         <i class="fas fa-redo me-2"></i>Пройти тест снова
                     </a>
                 {% elif progress.score >= 85 %}
+                    <a href="{% url 'module_materials' course_id module_id %}" class="btn btn-warning btn-lg me-3">
+                            <i class="fas fa-star me-2"></i>Углублённые материалы
+                        </a>
                     <a href="{% url 'courses' %}" class="btn btn-primary btn-lg">
                         <i class="fas fa-trophy me-2"></i>К следующему модулю
                     </a>

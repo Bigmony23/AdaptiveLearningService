@@ -306,6 +306,7 @@ class TestResultView(View):
             'course_id':course_id,
             'module_id':module_id,
             'remaining_attempts':remaining_attempts,
+            'show_advanced_materials': user_progress.score >= 85
         }
         return render(request,'courses/test_result.html',context)
 
